@@ -116,8 +116,5 @@
       }
     }
   },
-  "defaultProject": "alb-tourist",
-  "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
-  }
+  "defaultProject": "alb-tourist"
 }
