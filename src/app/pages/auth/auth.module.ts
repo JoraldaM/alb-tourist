@@ -11,10 +11,7 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full',
   },
-  {
-    path: 'register',
-    component: RegisterComponent,
-  },
+
   {
     path: '',
     component: AuthLayoutComponent,
@@ -23,6 +20,10 @@ const routes: Routes = [
         path: 'login',
         // canActivate: [AdminExistsGuard],
         component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
       },
     ],
   },
