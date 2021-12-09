@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './auth-layout/auth-layout/auth-layout.component';
 import { LoginComponent } from './login/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   {

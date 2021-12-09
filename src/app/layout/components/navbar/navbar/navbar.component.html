@@ -1,1 +1,35 @@
-<p>navbar works!</p>
+<mat-toolbar
+  class="d-flex justify-content-between align-items-center"
+  color="primary">
+  <div class="d-flex align-items-center">
+    <div>Amigos - POS</div>
+    <div class="ml-5">
+      <ng-container>
+        <button>
+          <mat-icon class="mr-2"></mat-icon>
+          <span></span>
+        </button>
+      </ng-container>
+    </div>
+  </div>
+  <div>
+    <button mat-button>
+      Hello
+      <span class="material-icons ml-1">expand_more</span>
+    </button>
+    <mat-menu>
+      <button mat-menu-item>
+        <span class="d-flex align-items-center" routerLink="profile">
+          <span class="material-icons mr-1">person_outline</span>
+          <span>Profile</span>
+        </span>
+      </button>
+      <button mat-menu-item>
+        <span class="d-flex align-items-center">
+          <span class="material-icons mr-1">logout</span>
+          <span>Logout</span>
+        </span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

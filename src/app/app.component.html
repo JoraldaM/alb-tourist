@@ -1,1 +1,39 @@
 <!-- <button class="btn btn-primary">Test {{ title }}</button> -->
+
+<mat-toolbar
+  class="d-flex justify-content-between align-items-center"
+  color="primary">
+  <div class="d-flex align-items-center">
+    <div>alb - tourist</div>
+  </div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menu">
+      Hello
+      <span class="material-icons ml-1">expand_more</span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span class="d-flex align-items-center" routerLink="profile">
+          <span class="material-icons mr-1">person_outline</span>
+          <span>Profile</span>
+        </span>
+      </button>
+      <button mat-menu-item>
+        <span class="d-flex align-items-center">
+          <span class="material-icons mr-1">logout</span>
+          <span>Logout</span>
+        </span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<!-- <swiper
+  [config]="config"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()">
+  <ng-template swiperSlide>Slide 1</ng-template>
+  <ng-template swiperSlide>Slide 2</ng-template>
+  <ng-template swiperSlide>Slide 3</ng-template>
+  <ng-template swiperSlide>Slide 4</ng-template>
+</swiper> -->
