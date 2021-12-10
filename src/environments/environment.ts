@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: '#',
+  apiUrl: 'https://tours-test-api.herokuapp.com',
 };
 
 /*

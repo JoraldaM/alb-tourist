@@ -1,3 +1,4 @@
+import { AuthLayoutComponent } from './pages/auth/auth-layout/auth-layout/auth-layout.component';
 import { LayoutModule } from './layout/layout.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { SwiperModule } from 'swiper/angular';
+// import { SwiperModule } from 'swiper/angular';
 // import { CanViewDirective } from './core/directives/can-view.directive';
 // import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
@@ -28,7 +29,7 @@ import { SwiperModule } from 'swiper/angular';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    SwiperModule,
+    // SwiperModule,
     // NgxUsefulSwiperModule,
   ],
   providers: [],

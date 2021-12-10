@@ -20,7 +20,7 @@
 //     private auth: AuthService
 //   ) {}
 
-//   @Input() set canView(role: 'manager' | 'admin' | 'user' | 'economist') {
+//   @Input() set canView(role: 'admin' | 'user' ) {
 //     switch (role) {
 //       case 'admin':
 //         if (this.isAdmin()) {
