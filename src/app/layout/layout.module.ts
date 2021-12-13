@@ -10,9 +10,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { FooterComponent } from './components/footer/footer/footer.component';
 
 @NgModule({
-  declarations: [EmptyLayoutComponent, MainLayoutComponent, NavbarComponent],
+  declarations: [
+    EmptyLayoutComponent,
+    MainLayoutComponent,
+    NavbarComponent,
+    FooterComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,

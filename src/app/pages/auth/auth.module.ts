@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -22,7 +24,6 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        // canActivate: [AdminExistsGuard],
         component: LoginComponent,
       },
       {
@@ -33,7 +34,7 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [AuthLayoutComponent, LoginComponent],
+  declarations: [AuthLayoutComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -41,6 +42,9 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class AuthModule {}

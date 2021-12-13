@@ -1,22 +1,21 @@
 <mat-card class="form-wrapper">
   <div class="p-3">
     <h1>Login</h1>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="d-inline-flex flex-column">
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input formControlName="email" matInput />
-          <mat-icon matSuffix>person_outline</mat-icon>
-          <mat-error> Email is not correct! </mat-error>
+          <mat-error *ngIf="form.get('email')?.invalid">
+            Email is not correct!
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput />
-          <button [attr.aria-label]="'Hide password'" mat-icon-button matSuffix>
-            <mat-icon></mat-icon>
-          </button>
+          <input formControlName="password" matInput />
         </mat-form-field>
         <button type="submit" mat-raised-button color="primary">Login</button>
+        <a routerLink="/auth/register" class="btn btn-link">Register</a>
       </div>
     </form>
   </div>

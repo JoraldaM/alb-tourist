@@ -11,7 +11,7 @@ import SwiperCore, {
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<router-outlet> </router-outlet>',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {

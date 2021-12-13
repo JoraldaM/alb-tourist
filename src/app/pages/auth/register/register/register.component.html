@@ -1,1 +1,29 @@
-<p>register works!</p>
+<mat-card class="form-wrapper">
+  <div class="p-3">
+    <h1>Register</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="d-inline-flex flex-column">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="text" matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput />
+          <mat-error> Email is not correct! </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input formControlName="password" matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>ImageURL</mat-label>
+          <input formControlName="url" matInput />
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary">
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-card>
