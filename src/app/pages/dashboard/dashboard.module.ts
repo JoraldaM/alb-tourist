@@ -4,9 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard.component';
 import { PackagesComponent } from '../packages/containers/all-packages/packages/packages.component';
 import { UsersComponent } from '../users/containers/all-users/users/users.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+// import { BarChartModule, PieChartModule } from '@swimlane/ngx-charts';
 
 // const routes: Routes = [
-// { path: '', component: DashboardComponent }
 //   {
 //     path: '',
 //     component: DashboardComponent,
@@ -20,14 +24,12 @@ import { UsersComponent } from '../users/containers/all-users/users/users.compon
 //       {
 //         path: 'packages',
 //         loadChildren: () =>
-//           import('./pages/packages/packages.module').then(
-//             m => m.PackagesModule
-//           ),
+//           import('./../packages/packages.module').then(m => m.PackagesModule),
 //       },
 //       {
 //         path: 'users',
 //         loadChildren: () =>
-//           import('./pages/users/users.module').then(m => m.UsersModule),
+//           import('./../users/users.module').then(m => m.UsersModule),
 //       },
 //     ],
 //   },
@@ -49,6 +51,16 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [DashboardComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    MatCardModule,
+    // BarChartModule,
+    // MatProgressSpinnerModule,
+    // PieChartModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
 })
 export class DashboardModule {}

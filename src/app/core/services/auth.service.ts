@@ -7,6 +7,7 @@ import { User } from '../models/user.model';
 import { API_URL } from '../api.token';
 import { Credentials } from '../models/credentials.model';
 import { LoginResponse } from '../models/LoginResponse';
+import { Register } from '../models/register.model';
 
 export interface AuthState {
   id: number | null;
@@ -43,7 +44,7 @@ export class AuthService {
     return this.state.role;
   }
 
-  profile$ = this.http.get<User>(`${this.api}/api/user`);
+  profile$ = this.http.get<User>(`${this.api}/api/User`);
 
   public getLocalState(): AuthState {
     const localState = localStorage.getItem('auth');
@@ -56,9 +57,9 @@ export class AuthService {
   //   const path = `${this.api}/createAdmin`;
   //   return this.http.post<{ message: string }>(path, payload);
   // }
-  register(user: User) {
-    const path = `${this.api}/auth/register`;
-    return this.http.post<User>(path, user);
+  register(reg: Register): Observable<any> {
+    const path = `${this.api}/api/Auth/register`;
+    return this.http.post(path, reg);
   }
 
   login(credentials: Credentials): Observable<LoginResponse> {
@@ -76,5 +77,17 @@ export class AuthService {
     localStorage.removeItem('auth');
     this.auth.next(initialState);
     this.router.navigateByUrl('auth/login').then();
+  }
+  changeName(name: string): Observable<User> {
+    return this.http
+      .post<User>(`${this.api}/auth/changeName`, { name })
+      .pipe(tap(_ => this.auth.next({ ...this.auth.getValue(), name })));
+  }
+
+  // changePassword(payload: any): Observable<User> {
+  //   return this.http.post<User>(`${this.api}/auth/changePassword`, payload);
+  // }
+  changeProfilePhoto(photo: any): Observable<any> {
+    return this.http.post(`${this.api}/users/${this.state.id}/setPhoto`, photo);
   }
 }
