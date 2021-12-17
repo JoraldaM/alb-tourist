@@ -17,7 +17,7 @@ export class LayoutService {
     },
     {
       label: 'Users',
-      path: 'manage-users',
+      path: 'users',
       icon: 'people',
       roles: ['admin'],
     },

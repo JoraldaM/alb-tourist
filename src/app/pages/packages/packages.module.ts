@@ -1,3 +1,6 @@
+import { UsersComponent } from './../users/containers/all-users/users/users.component';
+import { UserFormComponent } from './../users/components/user-form/user-form/user-form.component';
+import { ProfileComponent } from './../profile/profile/profile.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';

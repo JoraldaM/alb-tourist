@@ -1,3 +1,40 @@
-.card {
-  max-width: 400px;
+.profile-card {
+  min-width: 420px;
+  border: solid #7fa2d5;
+}
+
+.image-container {
+  border-radius: 10%;
+  width: 120px;
+  height: 150px;
+  overflow: hidden;
+}
+.change {
+  width: 120px;
+  background-color: #7fa2d5;
+  color: white;
+  height: 35px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+.dataContainer {
+  padding-top: 10px;
+  padding-left: 30px;
+  border-left: solid #7fa2d5;
+}
+.edit {
+  min-width: 80px;
+  background-color: #bd9dbb;
+  color: white;
+  height: 35px;
+  margin-bottom: 10px;
+}
+label {
+  // border-radius: 5%;
+  // border-left: #7fa2d5;
+  // border-style: dashed;
+  border-width: 1px;
+  border-bottom: solid #8e9db4;
+  padding: 4px;
+  margin-bottom: 5px;
 }

@@ -44,7 +44,7 @@ export class AuthService {
     return this.state.role;
   }
 
-  profile$ = this.http.get<User>(`${this.api}/api/User`);
+  profile$ = this.http.get<User>(`${this.api}/api/profile`);
 
   public getLocalState(): AuthState {
     const localState = localStorage.getItem('auth');
