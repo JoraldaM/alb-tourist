@@ -37,7 +37,7 @@ import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     component: DashboardComponent,
   },
   {

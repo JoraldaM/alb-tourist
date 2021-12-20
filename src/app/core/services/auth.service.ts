@@ -32,9 +32,11 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) {}
+  
 
   private auth = new BehaviorSubject<AuthState>(this.getLocalState());
   public auth$ = this.auth.asObservable().pipe(distinctUntilChanged());
+ 
 
   get state(): AuthState {
     return this.auth.getValue();
@@ -57,10 +59,21 @@ export class AuthService {
   //   const path = `${this.api}/createAdmin`;
   //   return this.http.post<{ message: string }>(path, payload);
   // }
-  register(reg: Register): Observable<any> {
-    const path = `${this.api}/api/Auth/register`;
-    return this.http.post(path, reg);
-  }
+  // register(reg: Register): Observable<any> {
+    // const path = `${this.api}/api/Auth/register`;
+    // return this.http.post(path, reg);
+  // }
+  // register(user: User) {
+    // return this.http.post(`${this.api}/api/Auth/register`, user);
+// }
+// register(user: User): Observable<any> {
+  // let apiReg = `${this.api}/api/Auth/register`;
+  // return this.http.post(apiReg, user)
+// }
+register(user:User): Observable<any> {
+  return this.http.post(`${this.api}/api/Auth/register`, user);
+}
+
 
   login(credentials: Credentials): Observable<LoginResponse> {
     const path = `${this.api}/api/Auth/login`;

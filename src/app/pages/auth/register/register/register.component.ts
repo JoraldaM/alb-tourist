@@ -12,8 +12,8 @@ export class RegisterComponent {
   form = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required],
-    text: ['', Validators.required],
-    url: ['', Validators.required],
+    name: ['', Validators.required],
+    imageUrl: ['', Validators.required],
   });
   constructor(private fb: FormBuilder, private auth: AuthService) {}
   submit(): void {
@@ -21,6 +21,8 @@ export class RegisterComponent {
       this.form.markAllAsTouched();
       return;
     }
+    // this.auth.register(this.form.value).subscribe();
     this.auth.register(this.form.value).pipe(take(1)).subscribe();
+
   }
 }

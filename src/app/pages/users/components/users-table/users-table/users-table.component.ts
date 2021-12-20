@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { User } from 'src/app/core/models/user.model';
 
 @Component({
   selector: 'app-users-table',
   templateUrl: './users-table.component.html',
-  styleUrls: ['./users-table.component.scss']
+  styleUrls: ['./users-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UsersTableComponent implements OnInit {
+export class UsersTableComponent {
+  @Input() data: User[] = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  displayedColumns: string[] = ['id', 'name', 'email',  'role'];
 
 }
