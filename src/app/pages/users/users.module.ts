@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { EditUserComponent } from './containers/edit-user/edit-user/edit-user.component';
 import { UserDetailsComponent } from './containers/user-details/user-details/user-details.component';
-import { UsersComponent } from './containers/all-users/users/users.component';
+import { UsersComponent } from './containers/users/users.component';
 import { UsersTableComponent } from './components/users-table/users-table/users-table.component';
 import { UserFormComponent } from './components/user-form/user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';

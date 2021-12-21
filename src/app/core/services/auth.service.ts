@@ -46,8 +46,8 @@ export class AuthService {
     return this.state.role;
   }
 
-  profile$ = this.http.get<User>(`${this.api}/api/profile`);
-
+  profile$ = this.http.get<User>(`${this.api}/api/Profile`);
+  
   public getLocalState(): AuthState {
     const localState = localStorage.getItem('auth');
     if (localState) {
@@ -55,22 +55,9 @@ export class AuthService {
     }
     return initialState;
   }
-  // createAdmin(payload: CreateAdminPayload): Observable<{ message: string }> {
-  //   const path = `${this.api}/createAdmin`;
-  //   return this.http.post<{ message: string }>(path, payload);
-  // }
-  // register(reg: Register): Observable<any> {
-    // const path = `${this.api}/api/Auth/register`;
-    // return this.http.post(path, reg);
-  // }
-  // register(user: User) {
-    // return this.http.post(`${this.api}/api/Auth/register`, user);
-// }
-// register(user: User): Observable<any> {
-  // let apiReg = `${this.api}/api/Auth/register`;
-  // return this.http.post(apiReg, user)
-// }
+  
 register(user:User): Observable<any> {
+  // console.log("user", user)
   return this.http.post(`${this.api}/api/Auth/register`, user);
 }
 
@@ -97,9 +84,6 @@ register(user:User): Observable<any> {
       .pipe(tap(_ => this.auth.next({ ...this.auth.getValue(), name })));
   }
 
-  // changePassword(payload: any): Observable<User> {
-  //   return this.http.post<User>(`${this.api}/auth/changePassword`, payload);
-  // }
   changeProfilePhoto(photo: any): Observable<any> {
     return this.http.post(`${this.api}/users/${this.state.id}/setPhoto`, photo);
   }

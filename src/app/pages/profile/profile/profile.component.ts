@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { take } from 'rxjs';
 // import { take } from 'rxjs';
 import { API_URL } from 'src/app/core/api.token';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -12,13 +13,12 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class ProfileComponent {
   user$ = this.auth.profile$;
 
-  // url: string | ArrayBuffer | null | undefined = '';
-  // editName = false;
+  editName = false;
   // changePassword = false;
-  // hasPhotoUploaded = false;
-  // uploadForm: FormGroup = this.fb.group({
-  //   profile: [''],
-  // });
+  
+  uploadForm: FormGroup = this.fb.group({
+    profile: [''],
+  });
   display = false;
   editForm = this.fb.group(
     {
@@ -29,17 +29,17 @@ export class ProfileComponent {
   );
   constructor(
     private auth: AuthService,
-    private fb: FormBuilder // @Inject(API_URL) private api: string
+    private fb: FormBuilder 
   ) {}
 
   displayForm() {
     this.display = !this.display;
   }
-  // submitName(name: string): void {
-  //   this.editName = false;
-  //   this.auth
-  //     .changeName(name)
-  //     .pipe(take(1))
-  //     .subscribe((user: any) => console.log(user));
-  // }
+  submitName(name: string): void {
+    this.editName = false;
+    this.auth
+      .changeName(name)
+      .pipe(take(1))
+      .subscribe((user: any) => console.log(user));
+  }
 }

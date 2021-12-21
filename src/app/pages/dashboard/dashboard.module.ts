@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard.component';
 import { PackagesComponent } from '../packages/containers/all-packages/packages/packages.component';
-import { UsersComponent } from '../users/containers/all-users/users/users.component';
+import { UsersComponent } from '../users/containers/users/users.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
