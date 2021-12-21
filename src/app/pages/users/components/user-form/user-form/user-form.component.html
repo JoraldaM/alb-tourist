@@ -10,7 +10,7 @@
         <input formControlName="email" matInput placeholder="johndoe@gmail.com" />
       </mat-form-field>
   
-      <mat-error *ngIf="password?.errors?.hasNumber">
+      <!-- <mat-error *ngIf="password?.errors?.hasNumber">
         Password should contain at least one number.
       </mat-error>
       <mat-error *ngIf="password?.errors?.hasCapitalCase">
@@ -21,17 +21,13 @@
       </mat-error>
       <mat-error *ngIf="password?.errors?.minlength">
         Password should contain at least 8 characters.
-      </mat-error>
+      </mat-error> -->
   
     
   
       <mat-form-field appearance="outline">
-        <mat-label>Role</mat-label>
-        <mat-select formControlName="role">
-          <!-- <mat-option *ngFor="let role of roles" [value]="role.value"> -->
-            <!-- {{ role.label }} -->
-          <!-- </mat-option> -->
-        </mat-select>
+        <mat-label>Image</mat-label>
+        <input formControlName="imageUrl" matInput />
       </mat-form-field>
   
       <button

@@ -19,7 +19,7 @@ export class UsersService {
 
   loadUsers(): void {
     this.http
-      .get<User[]>(`${this.api}/user`)
+      .get<User[]>(`${this.api}/api/User`)
       .pipe(take(1))
       .subscribe(
         response => {
@@ -32,20 +32,20 @@ export class UsersService {
   }
 
   one(id: number): Observable<any> {
-    return this.http.get(`${this.api}/user/${id}`);
+    return this.http.get(`${this.api}/api/User/${id}`);
   }
 
   create(payload: User): Observable<any> {
-    return this.http.post(`${this.api}/user`, payload);
+    return this.http.post(`${this.api}/api/User`, payload);
   }
 
   update(id: number, payload: User): Observable<any> {
-    return this.http.patch(`${this.api}/user/${id}`, payload);
+    return this.http.patch(`${this.api}/api/User/${id}`, payload);
   }
 
   delete(id: number): void {
     this.http
-      .delete(`${this.api}/user/${id}`)
+      .delete(`${this.api}/api/User/${id}`)
       .pipe(take(1))
       .subscribe(
         value => {

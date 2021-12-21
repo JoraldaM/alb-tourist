@@ -15,11 +15,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
-// import { SwiperModule } from 'swiper/angular';
-// import { CanViewDirective } from './core/directives/can-view.directive';
-// import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { AuthInterceptorProvider } from './core/interceptors/auth.interceptor';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,19 +28,8 @@ import { MatTableModule } from '@angular/material/table';
     LayoutModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    // SwiperModule,
-    // NgxUsefulSwiperModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    MatIconModule,
-    // ConfirmationDialogModule,
-    MatCardModule],
-  providers: [],
+    ],
+  providers: [AuthInterceptorProvider, MatSnackBar],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

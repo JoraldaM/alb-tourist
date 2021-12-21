@@ -8,47 +8,51 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-// import { BarChartModule, PieChartModule } from '@swimlane/ngx-charts';
-
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: DashboardComponent,
-
-//     children: [
-//       {
-//         path: '',
-//         redirectTo: 'dashboard',
-//         pathMatch: 'full',
-//       },
-//       {
-//         path: 'packages',
-//         loadChildren: () =>
-//           import('./../packages/packages.module').then(m => m.PackagesModule),
-//       },
-//       {
-//         path: 'users',
-//         loadChildren: () =>
-//           import('./../users/users.module').then(m => m.UsersModule),
-//       },
-//     ],
-//   },
-// ];
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: '',
     component: DashboardComponent,
-  },
-  {
-    path: 'packages',
-    component: PackagesComponent,
-  },
-  {
-    path: 'users',
-    component: UsersComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: 'packages',
+        loadChildren: () =>
+          import('../packages/packages.module').then(m => m.PackagesModule),
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('../users/users.module').then(m => m.UsersModule),
+      },
+    ],
   },
 ];
+
+// const routes: Routes = [
+//   {
+//     path: 'dashboard',
+//     component: DashboardComponent,
+//   },
+//   {
+//     path: 'packages',
+//     component: PackagesComponent,
+//   },
+//   {
+//     path: 'users',
+//     component: UsersComponent,
+//   },
+// ];
 @NgModule({
   declarations: [DashboardComponent],
   imports: [
@@ -56,11 +60,15 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MatCardModule,
     // BarChartModule,
-    // MatProgressSpinnerModule,
-    // PieChartModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatSnackBarModule,
   ],
+  exports: [RouterModule],
 })
 export class DashboardModule {}

@@ -6,6 +6,7 @@ import { UserDetailsComponent } from './containers/user-details/user-details/use
 import { UsersComponent } from './containers/users/users.component';
 import { UsersTableComponent } from './components/users-table/users-table/users-table.component';
 import { UserFormComponent } from './components/user-form/user-form/user-form.component';
+import { AddUserComponent } from './containers/add-user/add-user/add-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -22,6 +23,10 @@ const routes: Routes = [
     component: UsersComponent,
   },
   {
+    path:'add',
+    component: AddUserComponent,
+  },
+  {
     path: 'details/:id',
     component: UserDetailsComponent,
   },
@@ -31,18 +36,25 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [UsersComponent, UsersTableComponent, UserFormComponent, EditUserComponent, UserDetailsComponent],
-  imports: [CommonModule,    
+  declarations: [
+     UsersComponent,
+     UsersTableComponent, 
+     UserFormComponent, 
+     EditUserComponent,
+      UserDetailsComponent, 
+     AddUserComponent],
+  imports: [
+    CommonModule,    
      RouterModule.forChild(routes),
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    MatIconModule,
-    // ConfirmationDialogModule,
-    MatCardModule,],
+     MatTableModule,
+     MatFormFieldModule,
+     MatInputModule,
+     MatButtonModule,
+     ReactiveFormsModule,
+     MatSelectModule,
+     MatSnackBarModule,
+     MatIconModule,
+     MatCardModule,
+  ],
 })
 export class UsersModule {}
