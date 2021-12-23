@@ -20,21 +20,26 @@
 .dataContainer {
   padding-top: 10px;
   padding-left: 30px;
-  border-left: solid #7fa2d5;
+  border-left: solid #779bd1;
 }
 .edit {
   min-width: 80px;
-  background-color: #bd9dbb;
+  background-color: #b993b7;
   color: white;
   height: 35px;
   margin-bottom: 10px;
 }
 label {
-  // border-radius: 5%;
-  // border-left: #7fa2d5;
-  // border-style: dashed;
   border-width: 1px;
   border-bottom: solid #8e9db4;
   padding: 4px;
   margin-bottom: 5px;
+}
+.profile{
+margin-top: 100px;
+}
+.profile-card{
+  background-color: #bcc9db42;
+  color: rgb(20, 29, 37);
+  min-height: 300px;
 }

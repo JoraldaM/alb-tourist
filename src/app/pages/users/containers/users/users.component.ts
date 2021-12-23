@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit{
   filterUsers(name: string): void {
     this.users$ = this.usersService.users$.pipe(
       map(users =>
-        users.filter(u => u.name.toLowerCase().includes(name.toLowerCase()))
+       users.filter(u => u.name.toLowerCase().includes(name.toLowerCase()))
       )
     );
   }

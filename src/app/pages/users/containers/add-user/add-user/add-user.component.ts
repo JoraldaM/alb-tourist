@@ -24,22 +24,22 @@ export class AddUserComponent {
       .pipe(take(1))
       .subscribe(
         value => {
-          this.router.navigate(['users']).then();
+          this.router.navigate(['dashboard/users']).then();
           this.snackBar.open('User created successfully', 'close', {
             duration: 1000,
           });
         },
-        error => {
-          if (error instanceof HttpErrorResponse) {
-            if (error.status === 401) {
-              this.openSnackBar(error.error.message, 'alert-snackbar');
-            }
-            if (typeof error.error.message === 'string') {
-              this.openSnackBar(error.error.message, 'alert-snackbar');
-            }
+        // error => {
+          // if (error instanceof HttpErrorResponse) {
+            // if (error.status === 401) {
+              // this.openSnackBar(error.error.message, 'alert-snackbar');
+            // }
+            // if (typeof error.error.message === 'string') {
+              // this.openSnackBar(error.error.message, 'alert-snackbar');
+            // }
             
-          }
-        }
+          // }
+        // }
       );
   }
 

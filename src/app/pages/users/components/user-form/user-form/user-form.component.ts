@@ -22,6 +22,7 @@ export class UserFormComponent implements OnInit {
   form = this.fb.group({
     name: [null, Validators.required],
     email: [null, Validators.required],
+    password: [null, Validators.required],
     imageUrl: [null, Validators.required],
   });
   constructor(private fb: FormBuilder) {}

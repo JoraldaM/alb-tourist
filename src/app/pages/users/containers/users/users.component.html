@@ -12,12 +12,12 @@
         <input
         (keydown)="filterUsers($any($event.target).value)"
           matInput
-          placeholder="ex. John Doe" />
+          placeholder="name" />
         <mat-icon>person_search</mat-icon>
       </mat-form-field>
     </div> 
     <ng-container *ngIf="users$ | async as data">
-      <app-users-table *ngIf="data.length > 0" @fadeIn [data]="data">
+      <app-users-table *ngIf="data.length > 0"  [data]="data">
       </app-users-table>
     </ng-container>
 

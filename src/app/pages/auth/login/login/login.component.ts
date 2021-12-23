@@ -28,26 +28,11 @@ export class LoginComponent {
     this.auth.login(this.form.value)
     .pipe(take(1))
     .subscribe( 
-      // value => {},
+     value => {},
       
-      error => {
-        if (error instanceof HttpErrorResponse) {
-          if (error.status === 401) {
-            this.openSnackBar(error.error.message, 'alert-snackbar');
-          }
-          if (typeof error.error.message === 'string') {
-            this.openSnackBar(error.error.message, 'alert-snackbar');
-          }
-          const unhandledErrors = handleServerSideValidation(
-            error,
-            this.form
-          );
-          console.log(unhandledErrors, error);
-          if (unhandledErrors) {
-            this.openSnackBar(error.statusText, 'error');
-          }
-        }
-      }
+     error => {
+      this.openSnackBar(error.message, 'danger-alert');
+    }
     );
   }
   openSnackBar(message: string, panelClass: string): void {

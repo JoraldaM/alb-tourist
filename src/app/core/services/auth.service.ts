@@ -7,7 +7,6 @@ import { User } from '../models/user.model';
 import { API_URL } from '../api.token';
 import { Credentials } from '../models/credentials.model';
 import { LoginResponse } from '../models/LoginResponse';
-import { Register } from '../models/register.model';
 
 export interface AuthState {
   id: number | null;

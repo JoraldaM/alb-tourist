@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs';
 // import { take } from 'rxjs';
-import { API_URL } from 'src/app/core/api.token';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -25,11 +25,12 @@ export class ProfileComponent {
       name: ['', Validators.required],
       email: ['', Validators.required],
     }
-    // { validators: this.checkPasswords }
+  
   );
   constructor(
     private auth: AuthService,
-    private fb: FormBuilder 
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar, 
   ) {}
 
   displayForm() {
@@ -42,4 +43,28 @@ export class ProfileComponent {
       .pipe(take(1))
       .subscribe((user: any) => console.log(user));
   }
+  // save(): void {
+  //   console.log(this.url);
+  //   const formData = new FormData();
+  //   formData.append('photo', this.uploadForm?.get('profile')?.value);
+  //   this.auth.changeProfilePhoto(formData).subscribe(
+  //     res => {
+  //       if (res) {
+  //         this.openSnackBar('Photo Changed Successfully', 'success-snackbar');
+  //         this.hasPhotoUploaded = false;
+  //       }
+  //     },
+  //     error => {
+  //       this.openSnackBar(error.message, 'alert-snackbar');
+  //     }
+  //   );
+  // }
+  // openSnackBar(message: string, panelClass: string): void {
+  //   this.snackBar.open(message, '', {
+  //     duration: 3000,
+  //     horizontalPosition: 'center',
+  //     verticalPosition: 'top',
+  //     panelClass,
+  //   });
+  // }
 }
