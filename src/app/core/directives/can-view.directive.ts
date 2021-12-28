@@ -37,17 +37,6 @@ export class HideForDirective {
     //   this.hasView = false;
     // console.log('hiding for agent');
   }
-  // if role is admin, than hide for admin
-  // else if (role === 'Admin' && this.isAdmin()) {
-  //   this.viewContainer.clear();
-  //   this.hasView = false;
-  // console.log('hiding for admin');
-  // } else if (!this.hasView) {
-  // console.log('show for everyone');
-  //       this.viewContainer.createEmbeddedView(this.templateRef);
-  //       this.hasView = true;
-  //     }
-  //   }
 
   hide(): void {
     this.viewContainer.clear();

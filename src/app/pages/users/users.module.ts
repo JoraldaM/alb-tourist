@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const routes: Routes = [
   {
@@ -55,6 +56,7 @@ const routes: Routes = [
      MatSnackBarModule,
      MatIconModule,
      MatCardModule,
+     MatPaginatorModule,
   ],
 })
 export class UsersModule {}

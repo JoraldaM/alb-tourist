@@ -10,10 +10,10 @@
       <mat-form-field appearance="outline">
         <mat-label>Search</mat-label>
         <input
-        (keydown)="filterUsers($any($event.target).value)"
+        (keyup)="filterUsers($any($event.target).value)"
           matInput
           placeholder="name" />
-        <mat-icon>person_search</mat-icon>
+           <mat-icon>person_search</mat-icon>
       </mat-form-field>
     </div> 
     <ng-container *ngIf="users$ | async as data">

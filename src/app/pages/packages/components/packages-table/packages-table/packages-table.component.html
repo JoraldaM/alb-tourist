@@ -1,1 +1,41 @@
-<p>packages-table works!</p>
+<div class="mat-elevation-z1 rounded-table">
+    <table class="mat-table full-width" [dataSource]="dataSource" mat-table>
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell>ID</th>
+        <td *matCellDef="let element" mat-cell>{{ element.id }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell>Name</th>
+        <td *matCellDef="let element" mat-cell>{{ element.name }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th *matHeaderCellDef mat-header-cell></th>
+        <td *matCellDef="let element" mat-cell>
+          <button
+            [routerLink]="['/package/details', element.id]"
+            mat-button
+            type="button"
+            color="primary">
+            <mat-icon>info</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr
+        class="element-row"
+        *matRowDef="let row; columns: displayedColumns"
+        mat-row></tr>
+    </table>
+
+    <!-- <mat-paginator
+      [length]="pagination.total"
+      [pageIndex]="pagination.pagenumber"
+      [pageSize]="pagination.pageSize"
+      (page)="paginated.emit($event)"
+      showFirstLastButtons>
+    </mat-paginator> -->
+  </div>
+  

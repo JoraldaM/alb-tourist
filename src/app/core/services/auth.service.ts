@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { distinctUntilChanged, map, shareReplay, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
@@ -26,6 +26,8 @@ export const initialState: AuthState = {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  name: any;
+  
   constructor(
     @Inject(API_URL) private api: string,
     private http: HttpClient,
@@ -46,6 +48,20 @@ export class AuthService {
   }
 
   profile$ = this.http.get<User>(`${this.api}/api/Profile`);
+  updateProfile(payload: any): Observable<any> {
+    const formdata = new FormData();
+    let params = new HttpParams().set('name', this.name.getValue());
+    
+const httpOptions = {
+  // headers: new HttpHeaders({'Content-Type': 'application/json'})
+}
+    for(const key of Object.keys(payload)){
+      const value = payload[key];
+      formdata.append(key,value);
+    }
+    return this.http.put(`${this.api}/api/profile`, formdata, {headers: {'Content-Type': 'application/json'}, params: params});
+  }
+
   
   public getLocalState(): AuthState {
     const localState = localStorage.getItem('auth');
@@ -77,13 +93,5 @@ register(user:User): Observable<any> {
     this.auth.next(initialState);
     this.router.navigateByUrl('auth/login').then();
   }
-  changeName(name: string): Observable<User> {
-    return this.http
-      .post<User>(`${this.api}/auth/changeName`, { name })
-      .pipe(tap(_ => this.auth.next({ ...this.auth.getValue(), name })));
-  }
-
-  changeProfilePhoto(photo: any): Observable<any> {
-    return this.http.post(`${this.api}/users/${this.state.id}/setPhoto`, photo);
-  }
+  
 }

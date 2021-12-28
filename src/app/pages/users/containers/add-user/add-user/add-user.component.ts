@@ -26,7 +26,7 @@ export class AddUserComponent {
         value => {
           this.router.navigate(['dashboard/users']).then();
           this.snackBar.open('User created successfully', 'close', {
-            duration: 1000,
+            duration: 2000,
           });
         },
         // error => {

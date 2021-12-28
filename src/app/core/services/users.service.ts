@@ -16,19 +16,20 @@ export class UsersService {
     private http: HttpClient,
     private snackBar: MatSnackBar
   ) {}
+  
 
-  loadUsers(): void {
-    this.http
-      .get<User[]>(`${this.api}/api/User`)
-      .pipe(take(1))
-      .subscribe(
-        response => {
-          this.users.next(response);
-        },
-        error => {
-          this.openSnackBar(error.message, 'danger-alert');
-        }
-      );
+  loadUsers(): Observable<any> {
+   return this.http
+      .get(`${this.api}/api/User`,);
+      // .pipe(take(1))
+      // .subscribe(
+        // response => {
+          // this.users.next(response);
+        // },
+        // error => {
+          // this.openSnackBar(error.message, 'danger-alert');
+        // }
+      // );
   }
 
   one(id: number): Observable<any> {
@@ -41,6 +42,9 @@ export class UsersService {
 
   update(id: number, payload: User): Observable<any> {
     return this.http.patch(`${this.api}/api/User/${id}`, payload);
+  }
+  updateProf(id: number, payload: User): Observable<any> {
+    return this.http.put(`${this.api}/api/profile/`, payload);
   }
 
   delete(id: number): void {

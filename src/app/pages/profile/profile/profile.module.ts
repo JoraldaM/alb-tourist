@@ -22,7 +22,7 @@ const routes: Routes = [{ path: '', component: ProfileComponent }];
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
 })
 export class ProfileModule {}
