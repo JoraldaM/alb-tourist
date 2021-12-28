@@ -1,4 +1,4 @@
-
+import { PackagesTableComponent } from './components/packages-table/packages-table/packages-table.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -15,7 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { FavoriteButtonComponent } from './components/favorite-button/favorite-button/favorite-button.component';
+import { PackagesFormComponent } from './components/packages-form/packages-form/packages-form.component';
+// import { FavoriteButtonComponent } from './components/favorite-button/favorite-button/favorite-button.component';
 
 const routes: Routes = [
   {
@@ -23,12 +24,12 @@ const routes: Routes = [
     component: PackagesComponent,
   },
   {
-    path: 'details/:id',
-    component: PackageDetailsComponent,
-  },
-  {
     path: 'add',
     component: CreatePackageComponent,
+  },
+  {
+    path: 'details/:id',
+    component: PackageDetailsComponent,
   },
   {
     path: 'edit/:id',
@@ -41,9 +42,12 @@ const routes: Routes = [
     PackageDetailsComponent,
     CreatePackageComponent,
     EditPackageComponent,
-    FavoriteButtonComponent,
+    PackagesTableComponent,
+    PackagesFormComponent,
+    // FavoriteButtonComponent,
   ],
-  imports: [CommonModule, 
+  imports: [
+    CommonModule,
     RouterModule.forChild(routes),
     MatTableModule,
     MatPaginatorModule,
@@ -53,6 +57,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatIconModule,],
+    MatIconModule,
+  ],
 })
 export class PackagesModule {}

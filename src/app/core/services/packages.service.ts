@@ -1,127 +1,136 @@
-// import { Inject, Injectable } from '@angular/core';
+import { Pagination } from 'src/app/core/models/pagination.model';
+import { Inject, Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, distinctUntilChanged, tap } from 'rxjs/operators';
+// import { createParamsFromObject } from '../utils/create-params-from-object';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Package } from '../models/package.model';
+import { API_URL } from '../api.token';
 
-// // import { Pagination } from '../models/pagination.model';
-// import { BehaviorSubject, Observable, of } from 'rxjs';
-// import { catchError, distinctUntilChanged, tap } from 'rxjs/operators';
-// // import { createParamsFromObject } from '../utils/create-params-from-object';
-// import { HttpClient, HttpParams } from '@angular/common/http';
-// import { Package } from '../models/package.model';
-// import { Pagination } from '../models/pagination.model';
+export interface PackagesState {
+  filters: any;
+  data: Package[];
+  pagination: Pagination;
+  error: string | null;
+  loading: boolean;
+  loaded: boolean;
+}
 
+const initialState: PackagesState = {
+  data: [],
+  pagination: {
+    currentPage: 0,
+    totalPages: 0,
+    pageSize: 20,
+    totalCount: 0,
+    hasPrevious: false,
+    hasNext: false,
+  },
+  error: null,
+  loading: false,
+  loaded: false,
+  filters: undefined,
+  //   pagination: undefined,
+};
 
-// export interface PackagesState {
-//   filters: any;
-//   data: Package[];
-//   pagination: Pagination;
-//   error: string | null;
-//   loading: boolean;
-//   loaded: boolean;
-// }
+@Injectable({ providedIn: 'root' })
+export class PackageService {
+  private readonly state = new BehaviorSubject<PackagesState>(initialState);
+  readonly state$ = this.state.asObservable().pipe(distinctUntilChanged());
 
-// const initialState: PackagesState = {
-//   data: [],
-//   pagination: { pageSize: 10, currentPage: 0, totalCount: 0 },
-//   error: null,
-//   loading: false,
-//   loaded: false,
-// };
+  get currentState(): PackagesState {
+    return this.state.getValue();
+  }
 
-// @Injectable({ providedIn: 'root' })
-// export class PackageService {
-//   private readonly state = new BehaviorSubject<PackagesState>(initialState);
-//   readonly state$ = this.state.asObservable().pipe(distinctUntilChanged());
-//     api: any;
+  constructor(private http: HttpClient, @Inject(API_URL) private api: string) {}
 
-//   get currentState(): PackagesState {
-//     return this.state.getValue();
-//   }
+  getProducts(): Observable<any> {
+    const path = `${this.api}/Packages`;
+    // const params = createParamsFromObject(data)
+    //   .append('page', pagination.currentPage + '')
+    //   .append('pageSize', pagination.pageSize + '');
 
-//   constructor(private http: HttpClient) {}
+    return this.http.get<any>(path);
+  }
 
-//   getProducts(
-//     pagination: Pagination
-// //   ): Observable<any> {
-//     const path = `${this.api}/Packages`;
-//     // const params = createParamsFromObject(data)
-//     //   .append('page', pagination.currentPage + '')
-//     //   .append('pageSize', pagination.pageSize + '');
+  private setData(data: Package[], pagination: Pagination): void {
+    this.state.next({
+      ...this.currentState,
+      data,
+      pagination,
+      loading: false,
+      loaded: true,
+      error: null,
+    });
+  }
 
-//     // return this.http.get<any>(path/);
-// //   }
+  private setError(error: string): void {
+    this.state.next({
+      ...this.currentState,
+      error,
+      loading: false,
+      loaded: true,
+      data: [],
+    });
+  }
 
-//   private setData(data: Package[], pagination: Pagination): void {
-//     this.state.next({
-//       ...this.currentState,
-//       data,
-//       pagination,
-//       loading: false,
-//       loaded: true,
-//       error: null,
-//     });
-//   }
+  //   loadPackages(pagination?: Partial<Pagination>): Observable<Package> {
+  //     const currentPagination = this.currentState.pagination;
+  //     const newPagination = pagination
+  //       ? { ...currentPagination, ...pagination }
+  //       : currentPagination;
 
-//   private setError(error: string): void {
-//     this.state.next({
-//       ...this.currentState,
-//       error,
-//       loading: false,
-//       loaded: true,
-//       data: [],
-//     });
-//   }
+  //     this.state.next({
+  //       ...this.currentState,
+  //       pagination: newPagination,
+  //       loading: true,
+  //       error: null,
+  //       loaded: false,
+  //     });
+  //     const { pageSize, currentPage } = this.currentState.pagination;
 
-//   loadPackages(
-//     pagination?: Partial<Pagination>
-//   ): Observable<any> {
-//     const currentPagination = this.currentState.pagination;
-//     const newPagination = pagination
-//       ? { ...currentPagination, ...pagination }
-//       : currentPagination;
+  //     return this.getPackages(this.currentState.pagination).pipe(
+  //       tap(res => {
+  //         const samplePagination: Pagination = {
+  //           pageSize: res.per_page,
+  //           currentPage: res.current_page,
+  //           totalCount: res.total,
+  //           totalPages: res.totalPages,
+  //           hasPrevious: false,
+  //           hasNext: false,
+  //         };
 
-//     this.state.next({
-//       ...this.currentState,
-//       pagination: newPagination,
-//       loading: true,
-//       error: null,
-//       loaded: false,
-//     });
-//     // const {pageSize, pageIndex} = this.currentState.pagination;
+  //         return this.setData(res.data, samplePagination);
+  //       }),
+  //       catchError(error => {
+  //         this.setError('An error has occurred. Please try again later!');
+  //         return of(error);
+  //       })
+  //     );
+  //   }
 
-//     // return this.getPackages(
-//     //   this.currentState.pagination
-//     // ).pipe(
-//     //   tap(res => {
-//     //     const samplePagination: Pagination = {
-//     //       pageSize: + res.per_page,
-//     //       pageIndex: res.current_page, 
-//     //       total: res.total,
-//     //     };
+  loadPackages(): Observable<any> {
+    return this.http.get(`${this.api}/api/Package`);
+    // .pipe(take(1))
+    // .subscribe(
+    //   response => {
+    //     this.users.next(response);
+    //   },
+    //   error => {
+    //     this.openSnackBar(error.message, 'danger-alert');
+    //   }
+    // );
+  }
 
-//     //     return this.setData(res.data, samplePagination);
-//     //   }),
-//       catchError(error => {
-//         this.setError('An error has occurred. Please try again later!');
-//         return of(error);
-//       })
-//     // );
-//   }
-//     getPackages(pagination: Pagination) {
-//         throw new Error('Method not implemented.');
-//     }
+  getById(id: string): Observable<any> {
+    return this.http.get<Package>(`${this.api}/api/Package/${id}`);
+  }
 
-//   getById(id: string): Observable<Package> {
-//     return this.http.get<Package>(`${this.api}/Package/${id}`);
-//   }
+  createPackage(payload: Package): Observable<Package> {
+    return this.http.post<Package>(`${this.api}/api/Package`, payload);
+  }
 
-
-
-//   createProduct(payload: Package): Observable<Package> {
-//     const path = `${this.api}/Package`;
-//     return this.http.post<Package>(path, payload);
-//   }
-
-//   updateProduct(id: number, payload: Package): Observable<Package> {
-//     const path = `${this.api}/Package/${id}`;
-//     return this.http.patch<Package>(path, payload);
-//   }
-// }
+  updatePackage(id: number, payload: Package): Observable<Package> {
+    return this.http.patch<Package>(`${this.api}/api/Package/${id}`, payload);
+  }
+}

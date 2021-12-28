@@ -5,10 +5,9 @@ import { Package } from 'src/app/core/models/package.model';
 @Component({
   selector: 'app-packages-form',
   templateUrl: './packages-form.component.html',
-  styleUrls: ['./packages-form.component.scss']
+  styleUrls: ['./packages-form.component.scss'],
 })
 export class PackagesFormComponent implements OnInit {
-
   @Input() package?: Package;
 
   @Input() readonly = false;

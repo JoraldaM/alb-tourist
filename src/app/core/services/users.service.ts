@@ -16,20 +16,18 @@ export class UsersService {
     private http: HttpClient,
     private snackBar: MatSnackBar
   ) {}
-  
 
   loadUsers(): Observable<any> {
-   return this.http
-      .get(`${this.api}/api/User`,);
-      // .pipe(take(1))
-      // .subscribe(
-        // response => {
-          // this.users.next(response);
-        // },
-        // error => {
-          // this.openSnackBar(error.message, 'danger-alert');
-        // }
-      // );
+    return this.http.get(`${this.api}/api/User`);
+    // .pipe(take(1))
+    // .subscribe(
+    //   response => {
+    //     this.users.next(response);
+    //   },
+    //   error => {
+    //     this.openSnackBar(error.message, 'danger-alert');
+    //   }
+    // );
   }
 
   one(id: number): Observable<any> {
@@ -79,4 +77,7 @@ export class UsersService {
       panelClass,
     });
   }
+}
+function pipe(arg0: any) {
+  throw new Error('Function not implemented.');
 }

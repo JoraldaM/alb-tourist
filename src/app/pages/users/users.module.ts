@@ -24,7 +24,7 @@ const routes: Routes = [
     component: UsersComponent,
   },
   {
-    path:'add',
+    path: 'add',
     component: AddUserComponent,
   },
   {
@@ -38,25 +38,26 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [
-     UsersComponent,
-     UsersTableComponent, 
-     UserFormComponent, 
-     EditUserComponent,
-      UserDetailsComponent, 
-     AddUserComponent],
+    UsersComponent,
+    UsersTableComponent,
+    UserFormComponent,
+    EditUserComponent,
+    UserDetailsComponent,
+    AddUserComponent,
+  ],
   imports: [
-    CommonModule,    
-     RouterModule.forChild(routes),
-     MatTableModule,
-     MatFormFieldModule,
-     MatInputModule,
-     MatButtonModule,
-     ReactiveFormsModule,
-     MatSelectModule,
-     MatSnackBarModule,
-     MatIconModule,
-     MatCardModule,
-     MatPaginatorModule,
+    CommonModule,
+    RouterModule.forChild(routes),
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatIconModule,
+    MatCardModule,
+    MatPaginatorModule,
   ],
 })
 export class UsersModule {}

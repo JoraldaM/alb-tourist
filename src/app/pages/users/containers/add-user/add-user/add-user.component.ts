@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/core/services/users.service';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+  styleUrls: ['./add-user.component.scss'],
 })
 export class AddUserComponent {
   constructor(
@@ -28,17 +28,17 @@ export class AddUserComponent {
           this.snackBar.open('User created successfully', 'close', {
             duration: 2000,
           });
-        },
+        }
         // error => {
-          // if (error instanceof HttpErrorResponse) {
-            // if (error.status === 401) {
-              // this.openSnackBar(error.error.message, 'alert-snackbar');
-            // }
-            // if (typeof error.error.message === 'string') {
-              // this.openSnackBar(error.error.message, 'alert-snackbar');
-            // }
-            
-          // }
+        // if (error instanceof HttpErrorResponse) {
+        // if (error.status === 401) {
+        // this.openSnackBar(error.error.message, 'alert-snackbar');
+        // }
+        // if (typeof error.error.message === 'string') {
+        // this.openSnackBar(error.error.message, 'alert-snackbar');
+        // }
+
+        // }
         // }
       );
   }
@@ -52,4 +52,3 @@ export class AddUserComponent {
     });
   }
 }
-

@@ -1,17 +1,17 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
-    <div class="row">
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Name</mat-label>
-          <input
-            type="text"
-            matInput
-            placeholder="Ex. Pizza"
-            formControlName="name" />
-        </mat-form-field>
-      </div>
-  
-      <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Ex. TiranaGuide"
+          formControlName="name" />
+      </mat-form-field>
+    </div>
+
+    <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Price</mat-label>
           <input
@@ -21,12 +21,12 @@
             formControlName="price" />
         </mat-form-field>
       </div> -->
-    
-      <div class="col-12" *ngIf="!readonly">
-        <button mat-raised-button color="primary">
-          <mat-icon class="mr-2">save</mat-icon>
-          <span>Save package</span>
-        </button>
-      </div>
+
+    <div class="col-12" *ngIf="!readonly">
+      <button mat-raised-button color="primary">
+        <mat-icon class="mr-2">save</mat-icon>
+        <span>Save package</span>
+      </button>
     </div>
-  </form>
+  </div>
+</form>

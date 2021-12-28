@@ -1,46 +1,43 @@
- import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, switchMap } from 'rxjs';
+import { PackageService } from 'src/app/core/services/packages.service';
 // import { BehaviorSubject, switchMap } from 'rxjs';
 // import { PackageService } from 'src/app/core/services/packages.service';
 
- @Component({
-   selector: 'app-packages',
- templateUrl: './packages.component.html',
-  styleUrls: ['./packages.component.scss']
+@Component({
+  selector: 'app-packages',
+  templateUrl: './packages.component.html',
+  styleUrls: ['./packages.component.scss'],
 })
-export class PackagesComponent  {
+export class PackagesComponent {
+  vm$ = this.productsService.state$;
 
-//   vm$ = this.productsService.state$;
+  dataSource: any;
+  pagination: any;
 
-//   dataSource: any;
-//   pagination: any;
+  load = new BehaviorSubject<any>(undefined);
 
-//   load = new BehaviorSubject<any>(undefined);
+  racing$ = this.load.asObservable().pipe(
+    switchMap((value: any) => {
+      // debugger;
 
-//   racing$ = this.load.asObservable().pipe(
-//     switchMap((value: any) => {
-//       // debugger;
-    
-//         if (value?.pageSize) {
-//           // pagination
-//           return this.productsService.loadPackages(value);
-//         } 
-//        else {
-//         // initial load
-//         return this.productsService.loadPackages();
-//       }
-//     })
-//   );
+      // if (value?.pageSize) {
+      // pagination
+      // return this.productsService.loadPackages(value);
+      // } else {
+      // initial load
+      return this.productsService.loadPackages();
+      // }
+    })
+  );
 
-//   constructor(
-//     private productsService: PackageService
-//   ) {}
+  constructor(private productsService: PackageService) {}
 
-//   ngOnInit(): void {
-//     this.vm$.subscribe(console.log);
-//   }
+  ngOnInit(): void {
+    this.vm$.subscribe(console.log);
+  }
 
-//   onClickedRow(row: any): void {
-//     console.log(row);
-//   }
-
+  onClickedRow(row: any): void {
+    console.log(row);
+  }
 }
