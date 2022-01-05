@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { PaginatedData } from 'src/app/core/models/PaginatedData.model';
 import { User } from 'src/app/core/models/user.model';
 
 @Component({
@@ -8,8 +10,9 @@ import { User } from 'src/app/core/models/user.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersTableComponent {
-  @Input() data: User[] = [];
-
-  displayedColumns: string[] = ['id', 'name', 'email',  'role'];
+  @Input() dataSource!: PaginatedData<User>; 
+  @Output() paginated = new EventEmitter<PageEvent>();
+  
+  displayedColumns: string[] = ['id', 'name', 'email',  'role', 'imageUrl'];
 
 }

@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { FooterComponent } from './components/footer/footer/footer.component';
+import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FooterComponent } from './components/footer/footer/footer.component';
     MainLayoutComponent,
     NavbarComponent,
     FooterComponent,
+    // SidebarComponent,
   ],
   imports: [
     CommonModule,

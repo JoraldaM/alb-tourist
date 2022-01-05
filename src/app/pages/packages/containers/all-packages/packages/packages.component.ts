@@ -10,7 +10,7 @@ import { PackageService } from 'src/app/core/services/packages.service';
   styleUrls: ['./packages.component.scss'],
 })
 export class PackagesComponent {
-  vm$ = this.productsService.state$;
+  vm$ = this.packagesService.state$;
 
   dataSource: any;
   pagination: any;
@@ -26,12 +26,12 @@ export class PackagesComponent {
       // return this.productsService.loadPackages(value);
       // } else {
       // initial load
-      return this.productsService.loadPackages();
+      return this.packagesService.loadPackages();
       // }
     })
   );
 
-  constructor(private productsService: PackageService) {}
+  constructor(private packagesService: PackageService) {}
 
   ngOnInit(): void {
     this.vm$.subscribe(console.log);

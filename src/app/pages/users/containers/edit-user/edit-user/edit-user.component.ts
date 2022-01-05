@@ -28,7 +28,7 @@ export class EditUserComponent {
       .pipe(take(1))
       .subscribe(
         value => {
-          this.router.navigate(['/users/details', this.userId]).then();
+          this.router.navigate(['/users/edit', this.userId]).then();
           this.snackBar.open('User edited successfully', 'close', {
             duration: 1000,
           });
@@ -41,11 +41,7 @@ export class EditUserComponent {
             if (typeof error.error.message === 'string') {
               this.openSnackBar(error.error.message, 'alert-snackbar');
             }
-            // const unhandledErrors = handleServerSideValidation(error, this.form);
-            // console.log(unhandledErrors, error);
-            // if (unhandledErrors) {
-            //   this.openSnackBar(error.statusText, 'error');
-            // }
+  
           }
         }
       );

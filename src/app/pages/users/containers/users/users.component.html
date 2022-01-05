@@ -7,16 +7,31 @@
         <span>Add user</span>
       </button>
     </div>
-    <mat-form-field appearance="outline">
-      <mat-label>Search</mat-label>
-      <input
-        (keyup)="filterUsers($any($event.target).value)"
-        matInput
-        placeholder="name" />
-      <mat-icon>person_search</mat-icon>
-    </mat-form-field>
+    
+    <div class="col">
+      <mat-form-field appearance="outline">
+      <input  matInput 
+       placeholder="name" [(ngModel)]="nameFilter" />
+      </mat-form-field>
+      <button class="mr-2" mat-raised-button color="primary" type="button" (click)="handleSearch()">
+        <mat-icon class="mr-2">search</mat-icon>
+        <span>Search</span>
+      </button>
+      <button
+      mat-raised-button
+        color="warn"
+        type="button"
+        (click)="clearFilters()">
+        Clear
+      </button>
+    </div>
   </div>
-  <ng-container *ngIf="users$ | async as data">
-    <app-users-table *ngIf="data.length > 0" [data]="data"> </app-users-table>
-  </ng-container>
+  
+  <div *ngIf="data$ | async as data">
+    <app-users-table
+      *ngIf="data.data.length > 0"
+      [dataSource]="data"
+      (paginated)="handlePagination($event)">
+   
+    </app-users-table>
 </div>

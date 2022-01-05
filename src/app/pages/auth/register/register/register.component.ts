@@ -30,10 +30,11 @@ export class RegisterComponent {
   
     },
     error => {
-      this.openSnackBar(error.message, 'danger-alert');
+      this.openSnackBar(error.error.message, 'danger-alert');
     }
 
   )}
+
   openSnackBar(message: string, panelClass: string): void {
     this.snackBar.open(message, '', {
       duration: 3000,

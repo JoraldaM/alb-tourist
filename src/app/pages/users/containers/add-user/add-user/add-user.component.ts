@@ -38,8 +38,7 @@ export class AddUserComponent {
         // this.openSnackBar(error.error.message, 'alert-snackbar');
         // }
 
-        // }
-        // }
+
       );
   }
 

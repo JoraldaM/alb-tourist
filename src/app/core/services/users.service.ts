@@ -1,15 +1,22 @@
 import { Inject, Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+} from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { API_URL } from '../api.token';
 import { User } from '../models/user.model';
+import { PaginatedData } from '../models/PaginatedData.model';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
   private users = new BehaviorSubject<User[]>([]);
+  private data = new BehaviorSubject<PaginatedData<User> | null>(null);
   users$ = this.users.asObservable();
+  //  nameFilter: null;
 
   constructor(
     @Inject(API_URL) private api: string,
@@ -17,17 +24,20 @@ export class UsersService {
     private snackBar: MatSnackBar
   ) {}
 
-  loadUsers(): Observable<any> {
-    return this.http.get(`${this.api}/api/User`);
-    // .pipe(take(1))
-    // .subscribe(
-    //   response => {
-    //     this.users.next(response);
-    //   },
-    //   error => {
-    //     this.openSnackBar(error.message, 'danger-alert');
-    //   }
-    // );
+  loadUsers(
+    pageNumber: number,
+    pageSize: number,
+    nameFilter: string | null
+  ): Observable<PaginatedData<User>> {
+    let params = new HttpParams();
+    if (nameFilter) {
+      params = params.append('name', nameFilter);
+    }
+    params = params.append('PageNumber', pageNumber);
+    params = params.append('PageSize', pageSize);
+    return this.http
+      .get<PaginatedData<User>>(`${this.api}/api/User`, { params })
+      .pipe(tap(x => console.log(x)));
   }
 
   one(id: number): Observable<any> {
@@ -77,7 +87,4 @@ export class UsersService {
       panelClass,
     });
   }
-}
-function pipe(arg0: any) {
-  throw new Error('Function not implemented.');
 }

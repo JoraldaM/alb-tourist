@@ -20,7 +20,7 @@
 
 //         // Favorite the package if it isn't favorited yet
 //         if (!this.package.favorited) {
-//           return this.packagesService.favorite(this.package.slug)
+//           return this.packagesService.favorite(this.package)
 //           .pipe(tap(
 //             data => {
 //               this.isSubmitting = false;
@@ -31,7 +31,7 @@
 
 //         // Otherwise, unfavorite the package
 //         } else {
-//           return this.packagesService.unfavorite(this.package.slug)
+//           return this.packagesService.unfavorite(this.package)
 //           .pipe(tap(
 //             data => {
 //               this.isSubmitting = false;

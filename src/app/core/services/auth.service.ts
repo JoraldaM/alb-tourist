@@ -7,6 +7,7 @@ import { User } from '../models/user.model';
 import { API_URL } from '../api.token';
 import { Credentials } from '../models/credentials.model';
 import { LoginResponse } from '../models/LoginResponse';
+import { Role } from '../models/role';
 
 export interface AuthState {
   id: number | null;
@@ -27,17 +28,15 @@ export const initialState: AuthState = {
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   name: any;
-  
+
   constructor(
     @Inject(API_URL) private api: string,
     private http: HttpClient,
     private router: Router
   ) {}
-  
 
   private auth = new BehaviorSubject<AuthState>(this.getLocalState());
   public auth$ = this.auth.asObservable().pipe(distinctUntilChanged());
- 
 
   get state(): AuthState {
     return this.auth.getValue();
@@ -51,18 +50,20 @@ export class AuthService {
   updateProfile(payload: any): Observable<any> {
     const formdata = new FormData();
     let params = new HttpParams().set('name', this.name.getValue());
-    
-const httpOptions = {
-  // headers: new HttpHeaders({'Content-Type': 'application/json'})
-}
-    for(const key of Object.keys(payload)){
+
+    const httpOptions = {
+      // headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    for (const key of Object.keys(payload)) {
       const value = payload[key];
-      formdata.append(key,value);
+      formdata.append(key, value);
     }
-    return this.http.put(`${this.api}/api/profile`, formdata, {headers: {'Content-Type': 'application/json'}, params: params});
+    return this.http.put(`${this.api}/api/profile`, formdata, {
+      headers: { 'Content-Type': 'application/json' },
+      params: params,
+    });
   }
 
-  
   public getLocalState(): AuthState {
     const localState = localStorage.getItem('auth');
     if (localState) {
@@ -70,12 +71,11 @@ const httpOptions = {
     }
     return initialState;
   }
-  
-register(user:User): Observable<any> {
-  // console.log("user", user)
-  return this.http.post(`${this.api}/api/Auth/register`, user);
-}
 
+  register(user: User): Observable<any> {
+    // console.log("user", user)
+    return this.http.post(`${this.api}/api/Auth/register`, user);
+  }
 
   login(credentials: Credentials): Observable<LoginResponse> {
     const path = `${this.api}/api/Auth/login`;
@@ -83,7 +83,11 @@ register(user:User): Observable<any> {
       tap(data => {
         this.auth.next(data);
         localStorage.setItem('auth', JSON.stringify(data));
-        this.router.navigateByUrl('/home').then();
+        if (this.role == 'User') {
+          this.router.navigateByUrl('/home').then();
+        } else {
+          this.router.navigateByUrl('/dashboard').then();
+        }
       })
     );
   }
@@ -93,5 +97,4 @@ register(user:User): Observable<any> {
     this.auth.next(initialState);
     this.router.navigateByUrl('auth/login').then();
   }
-  
 }

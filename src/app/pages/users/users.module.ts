@@ -7,7 +7,7 @@ import { UsersComponent } from './containers/users/users.component';
 import { UsersTableComponent } from './components/users-table/users-table/users-table.component';
 import { UserFormComponent } from './components/user-form/user-form/user-form.component';
 import { AddUserComponent } from './containers/add-user/add-user/add-user.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -57,6 +57,7 @@ const routes: Routes = [
     MatSnackBarModule,
     MatIconModule,
     MatCardModule,
+    FormsModule,
     MatPaginatorModule,
   ],
 })

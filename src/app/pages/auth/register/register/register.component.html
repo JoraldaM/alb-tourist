@@ -10,11 +10,11 @@
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input formControlName="email" matInput />
-          <mat-error> Email is not correct! </mat-error>
+          <mat-error *ngIf="form.get('email')?.invalid"> Email is not correct! </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input type="password" formControlName="password" matInput />
+          <input type="password" formControlName="password" matInput/>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>ImageURL</mat-label>
