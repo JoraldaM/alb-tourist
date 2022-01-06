@@ -13,6 +13,7 @@
             <app-edit-form-user
               [user]="user"
               (submitted)="handleEdit($event)"></app-edit-form-user>
+              <button type="button" class="mx-1 py-2 delete" mat-raised-button color="warn" (click)="delete(user.id)">	<mat-icon class="mr-2">delete</mat-icon><span>Delete</span></button>
           </mat-card-content>
         </mat-card>
       </div>

@@ -33,7 +33,7 @@ export class UsersComponent {
     this.data$ = this.usersService.loadUsers(1, 10, this.nameFilter);
   }
 
-  delete(id: number): void {
-    this.usersService.delete(id);
-  }
+  // delete(id: number): void {
+  //   this.usersService.delete(id);
+  // }
 }
