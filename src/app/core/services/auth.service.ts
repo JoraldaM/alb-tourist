@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { API_URL } from '../api.token';
 import { Credentials } from '../models/credentials.model';
-import { LoginResponse } from '../models/LoginResponse';
-import { Role } from '../models/role';
+import { LoginResponse } from '../models/LoginResponse.model';
 
 export interface AuthState {
   id: number | null;

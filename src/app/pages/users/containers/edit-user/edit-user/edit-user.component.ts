@@ -28,7 +28,7 @@ export class EditUserComponent {
       .pipe(take(1))
       .subscribe(
         value => {
-          this.router.navigate(['/users/edit', this.userId]).then();
+          this.router.navigate(['dashboard/users']).then();
           this.snackBar.open('User edited successfully', 'close', {
             duration: 1000,
           });

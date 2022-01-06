@@ -16,17 +16,4 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 })
 export class AppComponent {
   title = 'alb-tourist';
-  // config: SwiperOptions = {
-  //   slidesPerView: 3,
-  //   spaceBetween: 50,
-  //   navigation: true,
-  //   pagination: { clickable: true },
-  //   scrollbar: { draggable: true },
-  // };
-  // onSwiper(swiper: any) {
-  //   console.log(swiper);
-  // }
-  // onSlideChange() {
-  //   console.log('slide change');
-  // }
 }

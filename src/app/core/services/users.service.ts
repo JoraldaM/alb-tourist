@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { API_URL } from '../api.token';
 import { User } from '../models/user.model';
 import { PaginatedData } from '../models/PaginatedData.model';
+import { updateUser } from '../models/updateUser.model';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
@@ -49,7 +50,7 @@ export class UsersService {
   }
 
   update(id: number, payload: User): Observable<any> {
-    return this.http.patch(`${this.api}/api/User/${id}`, payload);
+    return this.http.put(`${this.api}/api/User/${id}`, payload);
   }
   updateProf(id: number, payload: User): Observable<any> {
     return this.http.put(`${this.api}/api/profile/`, payload);

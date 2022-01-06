@@ -10,7 +10,7 @@
         <div class="d-flex align-items-center justify-content-between mb-3">
         
           <button
-            [routerLink]="['/users/edit', user.id]"
+            [routerLink]="['/dashboard/users/edit', user.id]"
             mat-button
             color="primary">
             <mat-icon class="mr-2">manage_accounts</mat-icon>
@@ -20,7 +20,7 @@
   
         <mat-card>
           <mat-card-content>
-            <app-user-form [user]="user" [readonly]="true"></app-user-form>
+            <app-edit-form-user [user]="user" [readonly]="true"></app-edit-form-user>
           </mat-card-content>
         </mat-card>
       </div>
