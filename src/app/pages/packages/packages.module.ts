@@ -6,7 +6,7 @@ import { PackageDetailsComponent } from './containers/package-details/package-de
 import { PackagesComponent } from './containers/all-packages/packages/packages.component';
 import { CreatePackageComponent } from './containers/create-package/create-package/create-package.component';
 import { EditPackageComponent } from './containers/edit-package/edit-package/edit-package.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -58,6 +58,7 @@ const routes: Routes = [
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+    FormsModule,
   ],
 })
 export class PackagesModule {}

@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Package } from 'src/app/core/models/package.model';
-import { Pagination } from 'src/app/core/models/pagination.model';
+import { PaginatedData } from 'src/app/core/models/PaginatedData.model';
 
 @Component({
   selector: 'app-packages-table',
@@ -9,9 +9,7 @@ import { Pagination } from 'src/app/core/models/pagination.model';
   styleUrls: ['./packages-table.component.scss'],
 })
 export class PackagesTableComponent {
-  @Input() dataSource: Package[] = [];
-
-  // @Input() pagination: Pagination = {};
+  @Input() dataSource!: PaginatedData<Package>; 
 
   @Output() paginated = new EventEmitter<PageEvent>();
 

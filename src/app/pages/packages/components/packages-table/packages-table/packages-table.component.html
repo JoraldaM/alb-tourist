@@ -1,5 +1,5 @@
 <div class="mat-elevation-z1 rounded-table">
-  <table class="mat-table full-width" [dataSource]="dataSource" mat-table>
+  <table class="mat-table full-width" [dataSource]="dataSource.data" mat-table>
     <ng-container matColumnDef="id">
       <th *matHeaderCellDef mat-header-cell>ID</th>
       <td *matCellDef="let element" mat-cell>{{ element.id }}</td>
@@ -29,12 +29,12 @@
       *matRowDef="let row; columns: displayedColumns"
       mat-row></tr>
   </table>
-
-  <!-- <mat-paginator
-      [length]="pagination.total"
-      [pageIndex]="pagination.pagenumber"
-      [pageSize]="pagination.pageSize"
-      (page)="paginated.emit($event)"
-      showFirstLastButtons>
-    </mat-paginator> -->
+  <mat-paginator
+  [length]="dataSource.pagination.totalPages * dataSource.pagination.pageSize"
+  [pageIndex]="dataSource.pagination.currentPage - 1"
+  [pageSize]="dataSource.pagination.pageSize"
+  [pageSizeOptions]="[10, 30, 50]"
+  (page)="paginated.emit($event)"
+  showFirstLastButtons>
+</mat-paginator>
 </div>

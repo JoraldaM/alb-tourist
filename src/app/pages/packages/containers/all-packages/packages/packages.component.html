@@ -9,24 +9,31 @@
     </div>
   </div>
 
-  <ng-container *ngIf="racing$ | async"></ng-container>
+  <div class="col">
+    <mat-form-field appearance="outline">
+    <input  matInput 
+     placeholder="name" [(ngModel)]="nameFilter" />
+    </mat-form-field>
+    <button class="mr-2" mat-raised-button color="primary" type="button" (click)="handleSearch()">
+      <mat-icon class="mr-2">search</mat-icon>
+      <span>Search</span>
+    </button>
+    <button
+    mat-raised-button
+      color="warn"
+      type="button"
+      (click)="clearFilters()">
+      Clear
+    </button>
+  </div>
 
-  <ng-container *ngIf="vm$ | async as vm">
+
+  <ng-container *ngIf="data$ | async as data">
     <app-packages-table
-      class="packages-table"
-      *ngIf="vm.data.length > 0"
-      @fadeIn>
+    *ngIf="data.data.length > 0"
+    [dataSource]="data"
+    (paginated)="handlePagination($event)">
     </app-packages-table>
 
-    <div
-      class="no-data"
-      *ngIf="vm.data.length === 0 && vm.loaded && !vm.error"
-    >
-      No data found!
-    </div>
-
-    <div class="error" *ngIf="vm.error">
-      {{ vm.error }}
-    </div>
   </ng-container>
-</div>
+

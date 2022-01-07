@@ -28,17 +28,6 @@ export class CreatePackageComponent {
             duration: 2000,
           });
         }
-        // error => {
-        // if (error instanceof HttpErrorResponse) {
-        // if (error.status === 401) {
-        // this.openSnackBar(error.error.message, 'alert-snackbar');
-        // }
-        // if (typeof error.error.message === 'string') {
-        // this.openSnackBar(error.error.message, 'alert-snackbar');
-        // }
-
-        // }
-        // }
       );
   }
 }

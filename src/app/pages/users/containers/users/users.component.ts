@@ -19,9 +19,7 @@ export class UsersComponent {
   }
 
   handlePagination({ pageSize, pageIndex }: PageEvent): void {
-    if (pageIndex == 0) {
-      // pageIndex++;
-    }
+    
     this.data$ = this.usersService.loadUsers(
       pageIndex + 1,
       pageSize,
@@ -33,7 +31,4 @@ export class UsersComponent {
     this.data$ = this.usersService.loadUsers(1, 10, this.nameFilter);
   }
 
-  // delete(id: number): void {
-  //   this.usersService.delete(id);
-  // }
 }

@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { API_URL } from '../api.token';
 import { User } from '../models/user.model';
 import { PaginatedData } from '../models/PaginatedData.model';
-import { updateUser } from '../models/updateUser.model';
+
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
@@ -56,32 +56,9 @@ export class UsersService {
     return this.http.put(`${this.api}/api/profile/`, payload);
   }
 
-   delete(id: number):Observable<any>{
-     return this.http.delete(`${this.api}/api/User/${id}`);}
-  // delete(id: number): void {
-  //   this.http
-  //     .delete(`${this.api}/api/User/${id}`)
-  //     .pipe(take(1))
-  //     .subscribe(
-  //       value => {
-  //         this.users$ = this.users$.pipe(
-  //           map(users => users.filter(u => u.id !== id))
-  //         );
-  //         this.router.navigate(['dashboard/users']).then();
-  //         this.openSnackBar('User deleted successfully', 'success-snackbar');
-  //       },
-  //       error => {
-  //         if (error instanceof HttpErrorResponse) {
-  //           if (error.status === 401) {
-  //             this.openSnackBar(error.error.message, 'alert-snackbar');
-  //           }
-  //           if (typeof error.error.message === 'string') {
-  //             this.openSnackBar(error.error.message, 'alert-snackbar');
-  //           }
-  //         }
-  //       }
-  //     );
-  // }
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.api}/api/User/${id}`);
+  }
 
   openSnackBar(message: string, panelClass: string): void {
     this.snackBar.open(message, '', {
