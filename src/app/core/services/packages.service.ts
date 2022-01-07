@@ -1,11 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Package } from '../models/package.model';
+
 import { API_URL } from '../api.token';
 import { PaginatedData } from '../models/PaginatedData.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { Package } from '../models/packageRes.model';
 
 @Injectable({ providedIn: 'root' })
 export class PackageService {
@@ -38,13 +38,13 @@ export class PackageService {
     return this.http.get<Package>(`${this.api}/api/Package/${id}`);
   }
 
-  createPackage(payload: Package): Observable<Package> {
-    return this.http.post<Package>(`${this.api}/api/Package`, payload);
+  createPackage(payload: Package): Observable<any> {
+    return this.http.post(`${this.api}/api/Package`, payload);
   }
 
-  updatePackage(id: number, payload: Package): Observable<Package> {
-    return this.http.put<Package>(`${this.api}/api/Package/${id}`, payload);
-  }
+  updatePackage(id: number, payload: Package): Observable<any> {
+    return this.http.put(`${this.api}/api/Package/${id}`, payload);
+  } 
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.api}/api/Package/${id}`);
   }

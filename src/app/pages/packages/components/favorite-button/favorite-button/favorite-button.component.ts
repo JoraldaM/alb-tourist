@@ -1,5 +1,5 @@
 // import { Component, EventEmitter, Input, Output } from '@angular/core';
-// import { Package } from 'src/app/core/models/package.model';
+// import { Package } from 'src/app/core/models/packageRes.model';
 
 // @Component({
 //   selector: 'app-favorite-button',

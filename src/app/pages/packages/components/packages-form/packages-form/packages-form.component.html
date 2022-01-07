@@ -1,6 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input formControlName="id" matInput placeholder="Id Number" />
+      </mat-form-field>
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Name</mat-label>
         <input
@@ -9,24 +13,15 @@
           placeholder="Ex. TiranaGuide"
           formControlName="name" />
       </mat-form-field>
-    </div>
 
-    <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Price</mat-label>
-          <input
-            type="number"
-            matInput
-            placeholder="Ex. 23 ALL"
-            formControlName="price" />
-        </mat-form-field>
-      </div> -->
-
-    <div class="col-12" *ngIf="!readonly">
-      <button mat-raised-button color="primary">
-        <mat-icon class="mr-2">save</mat-icon>
-        <span>Save package</span>
-      </button>
-    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      *ngIf="!readonly"
+      [disabled]="form.invalid">
+      <mat-icon class="mr-2">save</mat-icon>
+      <span>Save package</span>
+    </button>
+  </div>
   </div>
 </form>

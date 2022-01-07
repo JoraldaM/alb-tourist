@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { Package } from 'src/app/core/models/package.model';
+import { Package } from 'src/app/core/models/packageRes.model';
 
 @Component({
   selector: 'app-packages-form',
@@ -15,7 +15,8 @@ export class PackagesFormComponent implements OnInit {
   @Output() submitted = new EventEmitter<Package>();
 
   form = this.fb.group({
-    name: ['', Validators.required],
+    id: [null, Validators.required],
+    name: [null, Validators.required],
   });
 
   constructor(private fb: FormBuilder) {}

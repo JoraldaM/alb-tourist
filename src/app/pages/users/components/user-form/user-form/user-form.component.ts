@@ -15,9 +15,6 @@ export class UserFormComponent implements OnInit {
 
   @Output() submitted = new EventEmitter<User>();
 
-  hide = true;
-                                   
-
 
   form = this.fb.group({
     name: [null, Validators.required],
@@ -29,7 +26,6 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.user) {
       this.form.patchValue(this.user);
-
 
     }
     if (this.readonly) {

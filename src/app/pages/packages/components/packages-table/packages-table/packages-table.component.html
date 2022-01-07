@@ -10,24 +10,17 @@
       <td *matCellDef="let element" mat-cell>{{ element.name }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th *matHeaderCellDef mat-header-cell></th>
-      <td *matCellDef="let element" mat-cell>
-        <button
-          [routerLink]="['/package/details', element.id]"
-          mat-button
-          type="button"
-          color="primary">
-          <mat-icon>info</mat-icon>
-        </button>
-      </td>
+    <ng-container matColumnDef="userName">
+      <th *matHeaderCellDef mat-header-cell>Creator Name</th>
+      <td *matCellDef="let element" mat-cell>{{ element.user.name }}</td>
     </ng-container>
 
-    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-    <tr
-      class="element-row"
-      *matRowDef="let row; columns: displayedColumns"
-      mat-row></tr>
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+
+      <tr
+        *matRowDef="let row; columns: displayedColumns"
+        [routerLink]="['details', row.id]"
+        mat-row></tr>
   </table>
   <mat-paginator
   [length]="dataSource.pagination.totalPages * dataSource.pagination.pageSize"

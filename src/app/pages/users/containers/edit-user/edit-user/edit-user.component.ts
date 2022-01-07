@@ -19,8 +19,7 @@ export class EditUserComponent {
     private users: UsersService,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private router: Router,
-    private usersService: UsersService
+    private router: Router
   ) {}
 
   handleEdit(data: User): void {

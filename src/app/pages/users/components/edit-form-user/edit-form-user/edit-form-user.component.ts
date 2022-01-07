@@ -13,9 +13,7 @@ export class EditFormUserComponent implements OnInit {
   @Input() readonly = false;
 
   @Output() submitted = new EventEmitter<User>();
-
-  hide = true;
-                                   
+                 
 
   form = this.fb.group({
     name: [null, Validators.required],

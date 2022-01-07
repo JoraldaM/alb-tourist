@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { Package } from 'src/app/core/models/package.model';
+import { Package } from 'src/app/core/models/packageRes.model';
 import { PaginatedData } from 'src/app/core/models/PaginatedData.model';
 
 @Component({
@@ -13,5 +13,5 @@ export class PackagesTableComponent {
 
   @Output() paginated = new EventEmitter<PageEvent>();
 
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'name', 'userName'];
 }
