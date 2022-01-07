@@ -13,7 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { SidebarComponent } from 'src/app/layout/components/sidebar/sidebar/sidebar.component';
 
 const routes: Routes = [
   {
