@@ -62,5 +62,6 @@ const routes: Routes = [
     FormsModule,
     MatPaginatorModule,
   ],
+  exports: [EditFormUserComponent],
 })
 export class UsersModule {}

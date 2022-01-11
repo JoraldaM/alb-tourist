@@ -8,8 +8,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
-import { MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthInterceptorProvider } from './core/interceptors/auth.interceptor';
+import { EditProfileComponent } from './pages/profile/components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,7 @@ import { AuthInterceptorProvider } from './core/interceptors/auth.interceptor';
     LayoutModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ],
+  ],
   providers: [AuthInterceptorProvider, MatSnackBar],
   bootstrap: [AppComponent],
 })

@@ -15,7 +15,6 @@ export class PackagesFormComponent implements OnInit {
   @Output() submitted = new EventEmitter<Package>();
 
   form = this.fb.group({
-    id: [null, Validators.required],
     name: [null, Validators.required],
   });
 

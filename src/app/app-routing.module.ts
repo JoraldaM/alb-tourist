@@ -30,9 +30,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: '',
         pathMatch: 'full',
-        
       },
       {
         path: 'dashboard',
@@ -40,22 +39,17 @@ const routes: Routes = [
           import('./pages/dashboard/dashboard.module').then(
             m => m.DashboardModule
           ),
-          
       },
       {
         path: 'profile',
         loadChildren: () =>
-          import('./pages/profile/profile/profile.module').then(
-            m => m.ProfileModule
-          ),
+          import('./pages/profile/profile.module').then(m => m.ProfileModule),
       },
       {
         path: 'home',
         loadChildren: () =>
-          import('./pages/home/home/home.module').then(m => m.HomeModule),
-          
+          import('./pages/home/home.module').then(m => m.HomeModule),
       },
-
     ],
   },
 ];

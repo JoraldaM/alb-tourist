@@ -1,18 +1,26 @@
+import { UsersModule } from './../users/users.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { ProfileComponent } from './profile.component';
-import { MatCardModule } from '@angular/material/card';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-const routes: Routes = [{ path: '', component: ProfileComponent }];
+const routes: Routes = [
+  { path: '', component: ProfileComponent },
+  {
+    path: 'edit',
+    component: EditProfileComponent,
+  },
+];
 
 @NgModule({
-  declarations: [ProfileComponent],
+  declarations: [ProfileComponent, EditProfileComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -22,7 +30,8 @@ const routes: Routes = [{ path: '', component: ProfileComponent }];
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // UsersModule,
   ],
 })
 export class ProfileModule {}

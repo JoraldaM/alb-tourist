@@ -1,33 +1,27 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
-    <div class="d-flex flex-column">
-      <mat-form-field appearance="outline">
-        <mat-label>ID</mat-label>
-        <input formControlName="id" matInput placeholder="Id Number" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input formControlName="name" matInput placeholder="John Doe" />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input formControlName="email" matInput placeholder="johndoe@gmail.com" />
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline">
-        <mat-label>Image</mat-label>
-        <input formControlName="imageUrl" matInput />
-      </mat-form-field>
-  
-      <button
-        class="mx-1 py-2"
-        *ngIf="!readonly"
-        [disabled]="form.invalid"
-        mat-raised-button
-        color="primary">
-        <mat-icon class="mr-2">save</mat-icon>
-        <span>Save</span>
-      </button>
-    </div>
-  </form>
-  
+  <div class="d-flex flex-column">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="John Doe" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="johndoe@gmail.com" />
+    </mat-form-field>
 
+    <mat-form-field appearance="outline">
+      <mat-label>Image</mat-label>
+      <input formControlName="imageUrl" matInput />
+    </mat-form-field>
+
+    <button
+      class="mx-1 py-2"
+      *ngIf="!readonly"
+      [disabled]="form.invalid"
+      mat-raised-button
+      color="primary">
+      <mat-icon class="mr-2">save</mat-icon>
+      <span>Save</span>
+    </button>
+  </div>
+</form>

@@ -5,9 +5,7 @@
     <img src="assets/img/logo-alb.png" height="65px" width="100px" />
   </div>
   <div>
-    <!-- <button mat-button [matMenuTriggerFor]="menu"> -->
-      <button *ngIf="name$ | async as name" [matMenuTriggerFor]="menu" mat-button>
-
+    <button *ngIf="name$ | async as name" [matMenuTriggerFor]="menu" mat-button>
       Hello {{ name }}
       <span class="material-icons ml-1">expand_more</span>
     </button>

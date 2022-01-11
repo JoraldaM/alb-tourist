@@ -11,15 +11,19 @@
 
   <div class="col">
     <mat-form-field appearance="outline">
-    <input  matInput 
-     placeholder="name" [(ngModel)]="nameFilter" />
+      <input matInput placeholder="name" [(ngModel)]="nameFilter" />
     </mat-form-field>
-    <button class="mr-2" mat-raised-button color="primary" type="button" (click)="handleSearch()">
+    <button
+      class="mr-2"
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="handleSearch()">
       <mat-icon class="mr-2">search</mat-icon>
       <span>Search</span>
     </button>
     <button
-    mat-raised-button
+      mat-raised-button
       color="warn"
       type="button"
       (click)="clearFilters()">
@@ -27,13 +31,11 @@
     </button>
   </div>
 
-
   <ng-container *ngIf="data$ | async as data">
     <app-packages-table
-    *ngIf="data.data.length > 0"
-    [dataSource]="data"
-    (paginated)="handlePagination($event)">
+      *ngIf="data.data.length > 0"
+      [dataSource]="data"
+      (paginated)="handlePagination($event)">
     </app-packages-table>
-
   </ng-container>
-
+</div>

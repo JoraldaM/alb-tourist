@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { PackageService } from 'src/app/core/services/packages.service';
 
-
 @Component({
   selector: 'app-packages',
   templateUrl: './packages.component.html',
@@ -19,7 +18,6 @@ export class PackagesComponent {
   }
 
   handlePagination({ pageSize, pageIndex }: PageEvent): void {
-    
     this.data$ = this.packagesService.loadPackages(
       pageIndex + 1,
       pageSize,
@@ -30,5 +28,4 @@ export class PackagesComponent {
   handleSearch(): void {
     this.data$ = this.packagesService.loadPackages(1, 10, this.nameFilter);
   }
-  
 }

@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { PackagesFormComponent } from './components/packages-form/packages-form/packages-form.component';
+import { PackagesEditFormComponent } from './components/packages-edit-form/packages-edit-form/packages-edit-form.component';
 // import { FavoriteButtonComponent } from './components/favorite-button/favorite-button/favorite-button.component';
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
     EditPackageComponent,
     PackagesTableComponent,
     PackagesFormComponent,
+    PackagesEditFormComponent,
     // FavoriteButtonComponent,
   ],
   imports: [

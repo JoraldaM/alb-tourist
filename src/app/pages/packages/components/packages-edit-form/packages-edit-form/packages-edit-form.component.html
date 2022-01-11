@@ -1,6 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+      <!-- <mat-form-field appearance="outline">
+          <mat-label>ID</mat-label>
+          <input formControlName="id" matInput placeholder="Id Number" />
+        </mat-form-field> -->
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Name</mat-label>
         <input
@@ -16,7 +20,7 @@
         *ngIf="!readonly"
         [disabled]="form.invalid">
         <mat-icon class="mr-2">save</mat-icon>
-        <span>Save</span>
+        <span> Save </span>
       </button>
     </div>
   </div>

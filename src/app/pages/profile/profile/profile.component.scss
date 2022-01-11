@@ -1,5 +1,8 @@
-.profile{
+.profile {
   min-width: 380px;
+  background-color: #bcc9db42;
+  color: rgb(20, 29, 37);
+  min-height: 300px;
 }
 
 .image-container {
@@ -22,9 +25,4 @@ label {
   padding: 4px;
   margin-bottom: 5px;
   font-size: large;
-}
-.profile{
-  background-color: #bcc9db42;
-  color: rgb(20, 29, 37);
-  min-height: 300px;
 }
