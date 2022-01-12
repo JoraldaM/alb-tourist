@@ -12,7 +12,6 @@ import { PackageService } from 'src/app/core/services/packages.service';
   styleUrls: ['./edit-package.component.scss'],
 })
 export class EditPackageComponent {
-
   packageId = this.route.snapshot.params['id'];
   package$ = this.pack.getById(this.packageId);
 
@@ -68,7 +67,6 @@ export class EditPackageComponent {
       );
   }
 
-
   openSnackBar(message: string, panelClass: string): void {
     this.snackBar.open(message, '', {
       duration: 3000,
@@ -78,5 +76,3 @@ export class EditPackageComponent {
     });
   }
 }
-
-

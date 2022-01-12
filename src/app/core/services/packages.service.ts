@@ -9,7 +9,7 @@ import { Package } from '../models/packageRes.model';
 
 @Injectable({ providedIn: 'root' })
 export class PackageService {
-  // private data = new BehaviorSubject<PaginatedData<Package> | null>(null);
+  private data = new BehaviorSubject<PaginatedData<Package> | null>(null);
 
   constructor(
     @Inject(API_URL) private api: string,

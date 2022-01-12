@@ -21,13 +21,11 @@ export class CreatePackageComponent {
     this.packages
       .createPackage(data)
       .pipe(take(1))
-      .subscribe(
-        value => {
-          this.router.navigate(['dashboard/packages']).then();
-          this.snackBar.open('Package created successfully', 'close', {
-            duration: 2000,
-          });
-        }
-      );
+      .subscribe(value => {
+        this.router.navigate(['dashboard/packages']).then();
+        this.snackBar.open('Package created successfully', 'close', {
+          duration: 2000,
+        });
+      });
   }
 }

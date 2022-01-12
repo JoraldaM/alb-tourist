@@ -9,7 +9,7 @@ import { PaginatedData } from 'src/app/core/models/PaginatedData.model';
   styleUrls: ['./packages-table.component.scss'],
 })
 export class PackagesTableComponent {
-  @Input() dataSource!: PaginatedData<Package>; 
+  @Input() dataSource!: PaginatedData<Package>;
 
   @Output() paginated = new EventEmitter<PageEvent>();
 

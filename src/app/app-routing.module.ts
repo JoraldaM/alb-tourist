@@ -50,6 +50,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/home/home.module').then(m => m.HomeModule),
       },
+      {
+        path: 'favorites',
+        loadChildren: () =>
+          import('./pages/favorites/favorites/favorites.module').then(
+            m => m.FavoritesModule
+          ),
+      },
     ],
   },
 ];
