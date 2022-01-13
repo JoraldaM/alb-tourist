@@ -6,10 +6,11 @@ import { API_URL } from '../api.token';
 import { PaginatedData } from '../models/PaginatedData.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Package } from '../models/packageRes.model';
+import { Favorites } from '../models/favorite.model';
 
 @Injectable({ providedIn: 'root' })
 export class PackageService {
-  private data = new BehaviorSubject<PaginatedData<Package> | null>(null);
+  // private data = new BehaviorSubject<PaginatedData<Package> | null>(null);
 
   constructor(
     @Inject(API_URL) private api: string,

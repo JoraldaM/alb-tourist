@@ -1,5 +1,3 @@
-
-
 export interface LoginResponse {
   id: number | null;
   name: string | null;

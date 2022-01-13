@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Package } from './../../../core/models/packageRes.model';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { PackageService } from 'src/app/core/services/packages.service';
 import { PaginatedData } from 'src/app/core/models/PaginatedData.model';

@@ -7,7 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { FavoriteButtonComponent } from './home/components/package-helpers/package-single-page/package-single-page/favorite-button/favorite-button/favorite-button.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,7 +16,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-    FavoriteButtonComponent,
     PackageListComponent,
     PackageSinglePageComponent,
   ],
