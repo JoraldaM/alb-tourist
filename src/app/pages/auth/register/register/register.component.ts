@@ -17,23 +17,30 @@ export class RegisterComponent {
     name: ['', Validators.required],
     imageUrl: ['', Validators.required],
   });
-  constructor(private fb: FormBuilder, private auth: AuthService,  private router: Router, private snackBar: MatSnackBar) {}
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
   submit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
     // this.auth.register(this.form.value).subscribe();
-    this.auth.register(this.form.value).pipe(take(1)).subscribe( 
-     () => {
-      this.router.navigate(['auth/login']);
-  
-    },
-    error => {
-      this.openSnackBar(error.error.message, 'danger-alert');
-    }
-
-  )}
+    this.auth
+      .register(this.form.value)
+      .pipe(take(1))
+      .subscribe(
+        () => {
+          this.router.navigate(['auth/login']);
+        },
+        error => {
+          this.openSnackBar(error.error.message, 'danger-alert');
+        }
+      );
+  }
 
   openSnackBar(message: string, panelClass: string): void {
     this.snackBar.open(message, '', {
@@ -44,4 +51,3 @@ export class RegisterComponent {
     });
   }
 }
-

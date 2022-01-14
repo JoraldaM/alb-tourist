@@ -11,7 +11,12 @@ h3 {
   display: inline;
   margin: 10px;
 }
+label {
+  font-weight: 100;
+  font-family: 'Courier New', Courier, monospace;
+}
 button {
   background-color: rgb(109, 111, 206);
   color: white;
+  margin-left: 80px;
 }

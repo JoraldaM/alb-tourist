@@ -19,21 +19,26 @@ export class LoginComponent {
   });
   hide = true;
 
-  constructor(private fb: FormBuilder, private auth: AuthService,  private snackBar: MatSnackBar) {}
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private snackBar: MatSnackBar
+  ) {}
   submit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
-    this.auth.login(this.form.value)
-    .pipe(take(1))
-    .subscribe( 
-     value => {},
-      
-     error => {
-      this.openSnackBar(error.message, 'danger-alert');
-    }
-    );
+    this.auth
+      .login(this.form.value)
+      .pipe(take(1))
+      .subscribe(
+        value => {},
+
+        error => {
+          this.openSnackBar(error.message, 'danger-alert');
+        }
+      );
   }
   openSnackBar(message: string, panelClass: string): void {
     this.snackBar.open(message, '', {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs';
@@ -13,17 +13,18 @@ import { PackageService } from 'src/app/core/services/packages.service';
 })
 export class PackageListComponent {
   @Input() dataSource!: PaginatedData<Package>;
+  @Input() isFavorite: boolean = false;
+
   @Output() paginated = new EventEmitter<PageEvent>();
   constructor(
     private packageService: PackageService,
     private snackBar: MatSnackBar
   ) {}
-  isFavorite = true;
   isSubmitting = false;
 
   onFavorite(id: number, data: Package) {
-    if (this.isFavorite) {
-      this.isFavorite = false;
+    if (!this.isFavorite) {
+      this.isFavorite = true;
       this.packageService
         .addFavorites(id, data)
         .pipe(take(1))
@@ -34,16 +35,20 @@ export class PackageListComponent {
           });
         });
     } else {
-      this.isFavorite = true;
+      // this.isFavorite = false;
 
-      this.packageService
-        .removeFavorite(id)
-        .pipe(take(1))
-        .subscribe(value => {
-          this.snackBar.open('Package removed from favorites', 'close', {
-            duration: 1000,
-          });
-        });
+      //   this.packageService
+      //     .removeFavorite(id)
+      //     .pipe(take(1))
+      //     .subscribe(value => {
+      this.snackBar.open(
+        'This package is already added to favorites',
+        'close',
+        {
+          duration: 1000,
+        }
+      );
+      //     });
     }
   }
   openSnackBar(message: string, panelClass: string): void {

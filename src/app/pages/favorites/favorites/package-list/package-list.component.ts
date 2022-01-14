@@ -4,6 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs';
 import { PackageService } from 'src/app/core/services/packages.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-package-list',
@@ -22,19 +23,6 @@ export class PackageListComponent {
 
   onFavorite(id: number, data: Package) {
     if (this.isFavorite) {
-      this.packageService
-        .addFavorites(id, data)
-        .pipe(take(1))
-        .subscribe(value => {
-          console.log(data);
-          this.snackBar.open('Package added to favorites', 'close', {
-            duration: 1000,
-          });
-        });
-      this.isFavorite = false;
-    } else {
-      this.isFavorite = true;
-
       this.packageService
         .removeFavorite(id)
         .pipe(take(1))

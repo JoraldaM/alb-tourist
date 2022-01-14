@@ -1,21 +1,16 @@
 import { Inject, Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpParams,
-} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { API_URL } from '../api.token';
 import { User } from '../models/user.model';
 import { PaginatedData } from '../models/PaginatedData.model';
 
-
 @Injectable({ providedIn: 'root' })
 export class UsersService {
   private users = new BehaviorSubject<User[]>([]);
-  private data = new BehaviorSubject<PaginatedData<User> | null>(null);
+  // private data = new BehaviorSubject<PaginatedData<User> | null>(null);
   users$ = this.users.asObservable();
   //  nameFilter: null;
 

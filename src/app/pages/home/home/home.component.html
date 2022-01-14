@@ -1,6 +1,7 @@
 <hr />
 <h1>Packages</h1>
 <hr />
+
 <ng-container *ngIf="data$ | async as data">
   <app-package-list [dataSource]="data" (paginated)="handlePagination($event)">
   </app-package-list>

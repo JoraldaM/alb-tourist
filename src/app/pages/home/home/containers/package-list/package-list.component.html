@@ -1,6 +1,9 @@
-<div style="width: 45%; margin-left: 25%">
-  <mat-card *ngFor="let data of dataSource?.data" class="card">
-    <div class="container">
+<!-- <div style="width: 45%; margin-left: 25%"> -->
+<div class="container">
+  <div class="row">
+    <mat-card
+      class="offset-1 col-lg-5 col-sm-8"
+      *ngFor="let data of dataSource?.data">
       <div class="row">
         <div class="offset-1 col-5">
           <mat-card-header>
@@ -10,33 +13,39 @@
           </mat-card-header>
           <h2>{{ data.name }}</h2>
         </div>
-
-        <!-- <app-favorite-button></app-favorite-button> -->
         <div class="offset-1 col-5 align-self-end">
           <button mat-raised-button routerLink="package/{{ data.id }}">
-            <span>See more</span>
+            See more
           </button>
-          <button
-            class="btn btn-sm"
-            [ngClass]="{
-              disabled: isSubmitting,
-              'btn-outline-primary': !isFavorite,
-              'btn-primary': isFavorite
-            }"
+          <!-- 
+          <span
+            class="glyphicon"
+            [class.glyphicon-heart]="isFavorite"
+            [class.glyphicon-heart-empty]="!isFavorite"
             (click)="onFavorite(data.id, data)">
             <mat-icon> favorite </mat-icon><ng-content></ng-content>
-          </button>
+          </span> -->
+          <span
+            class="glyphicon"
+            [ngClass]="{
+              'glyphicon-heart': isFavorite,
+              'glyphicon-heart-empty': !isFavorite
+            }"
+            (click)="onFavorite(data.id, data)">
+            <mat-icon> favorite </mat-icon>
+            <!-- <ng-content></ng-content> -->
+          </span>
         </div>
       </div>
-    </div>
-  </mat-card>
+    </mat-card>
+    <!-- </div> -->
+  </div>
 
   <mat-paginator
     [length]="dataSource.pagination.totalPages * dataSource.pagination.pageSize"
     [pageIndex]="dataSource.pagination.currentPage - 1"
     [pageSize]="dataSource.pagination.pageSize"
     [pageSizeOptions]="[10, 30, 50]"
-    (page)="paginated.emit($event)"
-    showFirstLastButtons>
+    (page)="paginated.emit($event)">
   </mat-paginator>
 </div>

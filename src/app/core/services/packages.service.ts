@@ -6,7 +6,6 @@ import { API_URL } from '../api.token';
 import { PaginatedData } from '../models/PaginatedData.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Package } from '../models/packageRes.model';
-import { Favorites } from '../models/favorite.model';
 
 @Injectable({ providedIn: 'root' })
 export class PackageService {
@@ -49,8 +48,8 @@ export class PackageService {
     return this.http.delete(`${this.api}/api/Package/${id}`);
   }
 
-  getFavorite(): Observable<any> {
-    return this.http.get(`${this.api}/api/Favorite`);
+  getFavorite(): Observable<Package[]> {
+    return this.http.get<Package[]>(`${this.api}/api/Favorite`);
   }
 
   addFavorites(packageId: number, payload: Package): Observable<any> {
