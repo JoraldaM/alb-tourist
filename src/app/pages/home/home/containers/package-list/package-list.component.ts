@@ -20,11 +20,11 @@ export class PackageListComponent {
     private packageService: PackageService,
     private snackBar: MatSnackBar
   ) {}
-  isSubmitting = false;
 
   onFavorite(id: number, data: Package) {
     if (!this.isFavorite) {
-      this.isFavorite = true;
+      // this.isFavorite = true;
+      this.isFavorite = !this.isFavorite;
       this.packageService
         .addFavorites(id, data)
         .pipe(take(1))

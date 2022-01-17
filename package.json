@@ -25,10 +25,9 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "bootstrap": "^5.1.3",
-    "ngx-swiper-wrapper": "^10.0.0",
     "ngx-useful-swiper": "^10.0.1",
     "rxjs": "^7.4.0",
-    "swiper": "^7.4.1",
+    "swiper": "^6.8.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

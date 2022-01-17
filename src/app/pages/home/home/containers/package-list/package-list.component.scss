@@ -2,11 +2,6 @@
   background: rgb(216, 231, 230);
   margin-top: 15px;
 }
-
-// ::ng-deep .mat-paginator-page-size-select {
-//   width: 50px !important;
-// }
-
 ::ng-deep .mat-select-value {
   color: #005999;
   font-weight: bold;
@@ -34,7 +29,7 @@ span {
   width: 50px;
   height: 50px;
 }
-span:hover {
-  color: #005999;
-  cursor: pointer;
-}
+// span:hover {
+//   color: #005999;
+//   cursor: pointer;
+// }

@@ -14,13 +14,13 @@
         <button mat-raised-button routerLink="package/{{ data.id }}">
           <span>See more</span>
         </button>
-        <!-- <span
+        <span
           class="glyphicon"
           [class.glyphicon-heart]="isFavorite"
           [class.glyphicon-heart-empty]="!isFavorite"
           (click)="onFavorite(data.id, data)">
           <mat-icon> favorite </mat-icon><ng-content></ng-content>
-        </span> -->
+        </span>
         <span
           class="glyphicon"
           [ngClass]="{

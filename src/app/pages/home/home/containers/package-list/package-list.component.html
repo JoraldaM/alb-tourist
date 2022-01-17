@@ -17,24 +17,24 @@
           <button mat-raised-button routerLink="package/{{ data.id }}">
             See more
           </button>
-          <!-- 
+
           <span
             class="glyphicon"
             [class.glyphicon-heart]="isFavorite"
             [class.glyphicon-heart-empty]="!isFavorite"
             (click)="onFavorite(data.id, data)">
-            <mat-icon> favorite </mat-icon><ng-content></ng-content>
-          </span> -->
-          <span
+            <!-- <mat-icon> favorite </mat-icon> -->
+          </span>
+          <!-- <span
             class="glyphicon"
             [ngClass]="{
               'glyphicon-heart': isFavorite,
               'glyphicon-heart-empty': !isFavorite
             }"
             (click)="onFavorite(data.id, data)">
-            <mat-icon> favorite </mat-icon>
-            <!-- <ng-content></ng-content> -->
-          </span>
+            <mat-icon> favorite </mat-icon> -->
+          <!-- <ng-content></ng-content> -->
+          <!-- </span> -->
         </div>
       </div>
     </mat-card>

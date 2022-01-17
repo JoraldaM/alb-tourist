@@ -2,7 +2,7 @@
   background: rgb(216, 231, 230);
 }
 .content {
-  width: 200px;
+  min-width: 200px;
 }
 .img-container {
   width: 180px;
@@ -16,7 +16,7 @@ label {
   font-family: 'Courier New', Courier, monospace;
 }
 button {
-  background-color: rgb(109, 111, 206);
+  background-color: rgb(53, 84, 105);
   color: white;
   margin-left: 80px;
 }
