@@ -1,3 +1,4 @@
+import { Favorites } from './../../../../../core/models/favorite.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';

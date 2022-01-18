@@ -15,10 +15,22 @@
 ::ng-deep .mat-select-arrow {
   color: #005999;
 }
-// button {
-//   border-radius: 5px;
-//   background-color: rgb(143, 144, 155);
-//   color: white;
-//   padding: 5px;
-//   margin: 5px;
-// }
+.mat-card-title {
+  font-weight: 100;
+  font-family: 'Courier New', Courier, monospace;
+}
+button {
+  border-radius: 5px;
+  background-color: rgb(32, 34, 49);
+  padding: 5px;
+  margin: 5px;
+  color: white;
+}
+button:hover {
+  background-color: #005999;
+}
+span {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}

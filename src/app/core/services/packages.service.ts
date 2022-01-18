@@ -1,3 +1,4 @@
+import { Favorites } from './../models/favorite.model';
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -48,8 +49,11 @@ export class PackageService {
     return this.http.delete(`${this.api}/api/Package/${id}`);
   }
 
-  getFavorite(): Observable<Package[]> {
-    return this.http.get<Package[]>(`${this.api}/api/Favorite`);
+  getFavorite(): Observable<Favorites[]> {
+    return this.http.get<Favorites[]>(`${this.api}/api/Favorite`);
+  }
+  getFavoriteCount(packageId: number): Observable<any> {
+    return this.http.get(`${this.api}/api/Favorite/package/${packageId}`);
   }
 
   addFavorites(packageId: number, payload: Package): Observable<any> {

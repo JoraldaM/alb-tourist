@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SwiperComponent } from './home/components/swiper/swiper.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+
 // import { SwiperModule } from 'swiper/angular';
 
 const routes: Routes = [

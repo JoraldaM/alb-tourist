@@ -7,27 +7,33 @@
           <mat-card-title>{{ data.user.name }}</mat-card-title>
           <mat-card-subtitle>{{ data.user.name }}</mat-card-subtitle>
         </mat-card-header> -->
-        <h2>{{ data.name }}</h2>
+        <h2>{{ data.package.name }}</h2>
+        <!-- <h5 *ngIf="favCount$ | async as count"> -->
+        Favorited:
+        <!-- <span>{{ count }}</span> -->
+        <!-- </h5> -->
       </div>
 
       <div class="offset-1 col-5 align-self-end">
-        <button mat-raised-button routerLink="package/{{ data.id }}">
+        <button
+          mat-raised-button
+          routerLink="/home/package/{{ data.packageId }}">
           <span>See more</span>
         </button>
         <span
           class="glyphicon"
           [class.glyphicon-heart]="isFavorite"
           [class.glyphicon-heart-empty]="!isFavorite"
-          (click)="onFavorite(data.id, data)">
+          (click)="onFavorite(data.id)">
           <mat-icon> favorite </mat-icon><ng-content></ng-content>
         </span>
-        <span
+        <!-- <span
           class="glyphicon"
           [ngClass]="{
             'glyphicon-star': isFavorite,
             'glyphicon-star-empty': !isFavorite
           }"
-          (click)="onFavorite(data.id, data)"></span>
+          (click)="onFavorite(data.id)"></span> -->
       </div>
     </div>
   </mat-card>

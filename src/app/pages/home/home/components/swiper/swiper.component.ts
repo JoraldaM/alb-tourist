@@ -10,15 +10,36 @@ import { Package } from 'src/app/core/models/packageRes.model';
 })
 export class SwiperComponent {
   @Input() dataSource!: PaginatedData<Package>;
+
   config: SwiperOptions = {
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
+    autoplay: {
+      delay: 800,
+      disableOnInteraction: false,
     },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+    speed: 800,
+    loop: true,
+    effect: 'coverflow',
+    grabCursor: true,
+    coverflowEffect: {
+      slideShadows: true,
+      rotate: 5,
+      stretch: 15,
+      depth: 5,
+      modifier: 5,
     },
-    spaceBetween: 30,
   };
+  // config: SwiperOptions = {
+  //   autoplay: {
+  //     delay: 800,
+  //     disableOnInteraction: true,
+  //   },
+  //   speed: 800,
+  //   loop: true,
+  //   effect: 'flip',
+  //   grabCursor: true,
+  //   flipEffect: {
+  //     slideShadows: true,
+  //     limitRotation: true,
+  //   },
+  // };
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PackageService } from 'src/app/core/services/packages.service';
 
 @Component({
@@ -7,6 +8,11 @@ import { PackageService } from 'src/app/core/services/packages.service';
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent {
-  constructor(private packagesService: PackageService) {}
+  constructor(
+    private packagesService: PackageService,
+    private route: ActivatedRoute
+  ) {}
+  // packageId = this.route.snapshot.params['id'];
   data$ = this.packagesService.getFavorite();
+  // favCount = this.packagesService.getFavoriteCount(this.packageId);
 }

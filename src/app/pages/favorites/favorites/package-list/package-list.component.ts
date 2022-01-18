@@ -1,10 +1,11 @@
-import { Package } from './../../../../core/models/packageRes.model';
+import { Favorites } from './../../../../core/models/favorite.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs';
 import { PackageService } from 'src/app/core/services/packages.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-package-list',
@@ -12,16 +13,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./package-list.component.scss'],
 })
 export class PackageListComponent {
-  @Input() dataSource!: Package[];
+  // packageId = this.route.snapshot.params['packageId'];
+  // favCount$ = this.packageService.getFavoriteCount(this.packageId);
+  @Input() dataSource!: Favorites[];
   @Output() paginated = new EventEmitter<PageEvent>();
   constructor(
     private packageService: PackageService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute
   ) {}
   isFavorite = true;
   isSubmitting = false;
 
-  onFavorite(id: number, data: Package) {
+  // getFavoriteCount(id: number) {
+  //   let favCount: number;
+  //   this.packageService.getFavoriteCount(id).subscribe(count => {
+  //     count.map(cnt => {
+  //       favCount = cnt;
+  //       console.log(favCount);
+  //     });
+  //   });
+  // }
+
+  onFavorite(id: number) {
     if (this.isFavorite) {
       this.packageService
         .removeFavorite(id)
