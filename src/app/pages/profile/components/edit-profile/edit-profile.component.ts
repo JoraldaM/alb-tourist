@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs';
 import { User } from 'src/app/core/models/user.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UsersService } from 'src/app/core/services/users.service';
@@ -14,11 +15,11 @@ import { UsersService } from 'src/app/core/services/users.service';
 export class EditProfileComponent implements OnInit {
   @Input() user?: User;
   @Input() readonly = false;
-  // userId = this.route.snapshot.params['id'];
-  // user$ = this.users.one(this.userId);
+
+  profileData$ = this.auth.profile$;
 
   @Output() submitted = new EventEmitter<User>();
-  display = false;
+
   editForm = this.fb.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
@@ -26,16 +27,12 @@ export class EditProfileComponent implements OnInit {
   });
   constructor(
     private users: UsersService,
-    private auth: AuthService,
     private router: Router,
-    private route: ActivatedRoute,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private auth: AuthService
   ) {}
 
-  displayForm() {
-    this.display = !this.display;
-  }
   ngOnInit(): void {
     if (this.user) {
       this.editForm.patchValue(this.user);
@@ -44,14 +41,23 @@ export class EditProfileComponent implements OnInit {
       this.editForm.disable();
     }
   }
-
   handleSubmit(): void {
     if (this.editForm.invalid) {
       this.editForm.markAllAsTouched();
       return;
     }
-
     this.submitted.emit(this.editForm.value);
-    this.display = true;
+  }
+  handleEdit(data: User): void {
+    this.users
+      .updateProf(data)
+      .pipe(take(1))
+      .subscribe(value => {
+        this.router.navigate(['profile']).then();
+        this.snackBar.open('Profile edited successfully', 'close', {
+          duration: 1000,
+        });
+      });
+    this.submitted.emit(this.editForm.value);
   }
 }

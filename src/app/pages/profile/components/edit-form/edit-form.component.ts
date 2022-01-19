@@ -3,11 +3,11 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { User } from 'src/app/core/models/user.model';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss'],
+  selector: 'app-edit-form',
+  templateUrl: './edit-form.component.html',
+  styleUrls: ['./edit-form.component.scss'],
 })
-export class UserFormComponent implements OnInit {
+export class EditFormComponent implements OnInit {
   @Input() user?: User;
   @Input() readonly = false;
 
@@ -15,8 +15,8 @@ export class UserFormComponent implements OnInit {
 
   form = this.fb.group({
     name: [null, Validators.required],
+    id: [null, Validators.required],
     email: [null, Validators.required],
-    password: [null, Validators.required],
     imageUrl: [null, Validators.required],
   });
   constructor(private fb: FormBuilder) {}

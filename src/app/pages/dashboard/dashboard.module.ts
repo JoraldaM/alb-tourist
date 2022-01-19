@@ -1,9 +1,9 @@
+import { MatMenuModule } from '@angular/material/menu';
+import { SidebarComponent } from './../../layout/components/sidebar/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard.component';
-import { PackagesComponent } from '../packages/containers/all-packages/packages/packages.component';
-import { UsersComponent } from '../users/containers/users/users.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgChartsModule } from 'ng2-charts';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const routes: Routes = [
   {
@@ -38,27 +41,12 @@ const routes: Routes = [
   },
 ];
 
-// const routes: Routes = [
-//   {
-//     path: 'dashboard',
-//     component: DashboardComponent,
-//   },
-//   {
-//     path: 'packages',
-//     component: PackagesComponent,
-//   },
-//   {
-//     path: 'users',
-//     component: UsersComponent,
-//   },
-// ];
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, SidebarComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MatCardModule,
-    // BarChartModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
@@ -67,6 +55,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatSelectModule,
     MatSnackBarModule,
+    NgChartsModule,
+    MatMenuModule,
+    MatListModule,
+    MatExpansionModule,
   ],
   exports: [RouterModule],
 })

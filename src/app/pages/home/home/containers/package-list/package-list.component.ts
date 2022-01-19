@@ -15,41 +15,40 @@ import { PackageService } from 'src/app/core/services/packages.service';
 export class PackageListComponent {
   @Input() dataSource!: PaginatedData<Package>;
   @Input() isFavorite: boolean = false;
-
+  @Input() isSubmitting: boolean = false;
   @Output() paginated = new EventEmitter<PageEvent>();
+  @Output() toggle = new EventEmitter<boolean>();
   constructor(
     private packageService: PackageService,
     private snackBar: MatSnackBar
   ) {}
-
+  // isSubmitting = false;
   onFavorite(id: number, data: Package) {
-    if (!this.isFavorite) {
-      // this.isFavorite = true;
-      this.isFavorite = !this.isFavorite;
+    if (!this.isSubmitting) {
       this.packageService
         .addFavorites(id, data)
         .pipe(take(1))
         .subscribe(value => {
+          this.isFavorite = true;
+          this.isSubmitting = true;
+          // this.isFavorite = !this.isFavorite;
           console.log(data);
           this.snackBar.open('Package added to favorites', 'close', {
             duration: 1000,
           });
         });
+      this.isSubmitting = true;
     } else {
-      // this.isFavorite = false;
-
-      //   this.packageService
-      //     .removeFavorite(id)
-      //     .pipe(take(1))
-      //     .subscribe(value => {
-      this.snackBar.open(
-        'This package is already added to favorites',
-        'close',
-        {
-          duration: 1000,
-        }
-      );
-      //     });
+      this.packageService
+        .removeFavorite(id)
+        .pipe(take(1))
+        .subscribe(value => {
+          this.isSubmitting = false;
+          this.isFavorite = false;
+          this.snackBar.open('Package removed from favorites', 'close', {
+            duration: 1000,
+          });
+        });
     }
   }
   openSnackBar(message: string, panelClass: string): void {

@@ -1,12 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import {
-  Component,
-  EventEmitter,
-  Inject,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -77,36 +70,4 @@ export class ProfileComponent implements OnInit {
   //         alert(error);
   //       });
   //  }
-  handleEdit(data: User): void {
-    this.users
-      .updateProf(this.userId, data)
-      .pipe(take(1))
-      .subscribe(
-        value => {
-          // this.router.navigate(['/profile']).then();
-          this.snackBar.open('User edited successfully', 'close', {
-            duration: 1000,
-          });
-        },
-        error => {
-          if (error instanceof HttpErrorResponse) {
-            if (error.status === 401) {
-              this.openSnackBar(error.error.message, 'alert-snackbar');
-            }
-            if (typeof error.error.message === 'string') {
-              this.openSnackBar(error.error.message, 'alert-snackbar');
-            }
-          }
-        }
-      );
-  }
-
-  openSnackBar(message: string, panelClass: string): void {
-    this.snackBar.open(message, '', {
-      duration: 3000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      panelClass,
-    });
-  }
 }

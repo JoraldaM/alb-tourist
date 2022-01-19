@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthInterceptorProvider } from './core/interceptors/auth.interceptor';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { AuthInterceptorProvider } from './core/interceptors/auth.interceptor';
     LayoutModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgChartsModule,
   ],
   providers: [AuthInterceptorProvider, MatSnackBar],
   bootstrap: [AppComponent],

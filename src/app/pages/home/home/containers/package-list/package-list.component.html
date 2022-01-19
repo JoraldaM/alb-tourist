@@ -13,17 +13,32 @@
           <h2>{{ data.name }}</h2>
         </div>
         <div class="offset-1 col-5 align-self-end">
-          <button mat-raised-button routerLink="package/{{ data.id }}">
+          <button
+            class="seeMore"
+            mat-raised-button
+            routerLink="package/{{ data.id }}">
             See more
           </button>
 
-          <span
+          <!-- <span
             class="glyphicon"
             [class.glyphicon-heart]="isFavorite"
             [class.glyphicon-heart-empty]="!isFavorite"
             (click)="onFavorite(data.id, data)">
             <mat-icon> favorite </mat-icon>
-          </span>
+          </span> -->
+
+          <button
+            class="btn btn-sm"
+            [ngClass]="{
+              disabled: isSubmitting,
+              'btn-outline-primary': !isFavorite,
+              'btn-primary': isFavorite
+            }"
+            (click)="onFavorite(data.id, data)">
+            <i class="ion-heart"></i> <ng-content></ng-content>
+          </button>
+
           <!-- <span
             class="glyphicon"
             [ngClass]="{

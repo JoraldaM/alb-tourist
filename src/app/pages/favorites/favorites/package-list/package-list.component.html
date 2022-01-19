@@ -8,10 +8,10 @@
           <mat-card-subtitle>{{ data.user.name }}</mat-card-subtitle>
         </mat-card-header> -->
         <h2>{{ data.package.name }}</h2>
-        <!-- <h5 *ngIf="favCount$ | async as count"> -->
-        Favorited:
-        <!-- <span>{{ count }}</span> -->
-        <!-- </h5> -->
+        <h5 *ngIf="favCount$ | async as count">
+          Favorited:
+          <span>{{ count }}</span>
+        </h5>
       </div>
 
       <div class="offset-1 col-5 align-self-end">

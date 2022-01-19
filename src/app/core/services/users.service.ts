@@ -47,8 +47,8 @@ export class UsersService {
   update(id: number, payload: User): Observable<any> {
     return this.http.put(`${this.api}/api/User/${id}`, payload);
   }
-  updateProf(id: number, payload: User): Observable<any> {
-    return this.http.put(`${this.api}/api/profile/`, payload);
+  updateProf(payload: User): Observable<any> {
+    return this.http.put(`${this.api}/api/profile`, payload);
   }
 
   delete(id: number): Observable<any> {

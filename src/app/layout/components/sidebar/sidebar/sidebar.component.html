@@ -1,0 +1,24 @@
+<div class="side-navigation__menu-button" (click)="expanded = !expanded">
+  <mat-icon
+    class="side-navigation__menu-button-label side-navigation__menu-button-icon"
+    >menu</mat-icon
+  >
+  <span class="list">
+    <mat-list-item>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        routerLink="packages">
+        <mat-icon>mms</mat-icon>
+        Packages
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="space-between center"
+        routerLink="users">
+        <mat-icon class="mr-2 mt-3">people</mat-icon>
+        Users
+      </div>
+    </mat-list-item>
+  </span>
+</div>
