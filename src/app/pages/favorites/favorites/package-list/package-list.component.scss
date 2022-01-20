@@ -3,18 +3,21 @@
   margin-top: 8px;
 }
 
-::ng-deep .mat-paginator-page-size-select {
-  width: 50px !important;
+:host {
+  ::ng-deep .mat-paginator-page-size-select {
+    width: 50px !important;
+  }
+
+  ::ng-deep .mat-select-value {
+    color: #005999;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  ::ng-deep .mat-select-arrow {
+    color: #005999;
+  }
 }
 
-::ng-deep .mat-select-value {
-  color: #005999;
-  font-weight: bold;
-  font-size: 15px;
-}
-::ng-deep .mat-select-arrow {
-  color: #005999;
-}
 .mat-card-title {
   font-weight: 100;
   font-family: 'Courier New', Courier, monospace;

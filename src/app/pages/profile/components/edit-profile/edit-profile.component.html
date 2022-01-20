@@ -10,9 +10,9 @@
 
       <mat-card>
         <mat-card-content *ngIf="profileData$ | async as data">
-          <app-edit-form
+          <app-form-edit
             [user]="data"
-            (submitted)="handleEdit($event)"></app-edit-form>
+            (submitted)="handleEdit($event)"></app-form-edit>
         </mat-card-content>
       </mat-card>
     </div>

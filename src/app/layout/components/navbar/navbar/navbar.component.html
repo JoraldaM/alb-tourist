@@ -1,6 +1,10 @@
 <mat-toolbar class="d-flex justify-content-between align-items-center">
   <div class="d-flex align-items-center">
-    <img src="assets/img/logo-alb.png" height="65px" width="100px" />
+    <img
+      src="assets/img/logo-alb.png"
+      height="65px"
+      width="100px"
+      routerLink="home" />
   </div>
   <div>
     <button *ngIf="name$ | async as name" [matMenuTriggerFor]="menu" mat-button>
@@ -16,7 +20,7 @@
       </button>
       <button mat-menu-item>
         <span class="d-flex align-items-center" routerLink="favorites">
-          <span class="material-icons mr-1">favorites</span>
+          <span class="material-icons mr-1">favorite_border</span>
           <span>Favorites</span>
         </span>
       </button>

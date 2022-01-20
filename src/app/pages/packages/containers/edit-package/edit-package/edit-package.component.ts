@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs';
+import { map, Observable, switchMap, take } from 'rxjs';
 import { Package } from 'src/app/core/models/packageRes.model';
 import { PackageService } from 'src/app/core/services/packages.service';
 
@@ -12,8 +12,10 @@ import { PackageService } from 'src/app/core/services/packages.service';
   styleUrls: ['./edit-package.component.scss'],
 })
 export class EditPackageComponent {
-  packageId = this.route.snapshot.params['id'];
-  package$ = this.pack.getById(this.packageId);
+  packageId$: Observable<string> = this.route.paramMap.pipe(
+    map(paraMap => paraMap.get('id')!)
+  );
+  package$ = this.packageId$.pipe(switchMap(id => this.pack.getById(id)));
 
   constructor(
     private pack: PackageService,
@@ -23,8 +25,8 @@ export class EditPackageComponent {
   ) {}
 
   handleEdit(data: Package): void {
-    this.pack
-      .updatePackage(this.packageId, data)
+    this.packageId$
+      .pipe(switchMap(id => this.pack.updatePackage(id, data)))
       .pipe(take(1))
       .subscribe(
         value => {
@@ -46,8 +48,8 @@ export class EditPackageComponent {
       );
   }
   delete(id: number): void {
-    this.pack
-      .delete(this.packageId)
+    this.packageId$
+      .pipe(switchMap(id => this.pack.delete(id)))
       .pipe(take(1))
       .subscribe(
         value => {

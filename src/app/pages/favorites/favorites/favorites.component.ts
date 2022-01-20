@@ -8,11 +8,7 @@ import { PackageService } from 'src/app/core/services/packages.service';
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent {
-  constructor(
-    private packagesService: PackageService,
-    private route: ActivatedRoute
-  ) {}
-  // packageId = this.route.snapshot.params['id'];
+  constructor(private packagesService: PackageService) {}
+
   data$ = this.packagesService.getFavorite();
-  // favCount = this.packagesService.getFavoriteCount(this.packageId);
 }

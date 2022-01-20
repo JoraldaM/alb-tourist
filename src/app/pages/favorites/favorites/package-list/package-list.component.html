@@ -8,10 +8,6 @@
           <mat-card-subtitle>{{ data.user.name }}</mat-card-subtitle>
         </mat-card-header> -->
         <h2>{{ data.package.name }}</h2>
-        <h5 *ngIf="favCount$ | async as count">
-          Favorited:
-          <span>{{ count }}</span>
-        </h5>
       </div>
 
       <div class="offset-1 col-5 align-self-end">
@@ -27,13 +23,6 @@
           (click)="onFavorite(data.id)">
           <mat-icon> favorite </mat-icon><ng-content></ng-content>
         </span>
-        <!-- <span
-          class="glyphicon"
-          [ngClass]="{
-            'glyphicon-star': isFavorite,
-            'glyphicon-star-empty': !isFavorite
-          }"
-          (click)="onFavorite(data.id)"></span> -->
       </div>
     </div>
   </mat-card>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, map, switchMap } from 'rxjs';
 import { PackageService } from 'src/app/core/services/packages.service';
 
 @Component({
@@ -8,7 +9,21 @@ import { PackageService } from 'src/app/core/services/packages.service';
   styleUrls: ['./package-single-page.component.scss'],
 })
 export class PackageSinglePageComponent {
-  package$ = this.pack.getById(this.route.snapshot.params['id']);
+  packageId$: Observable<string> = this.route.paramMap.pipe(
+    map(paramMap => paramMap.get('packageId')!)
+  );
+  id$: Observable<string> = this.route.paramMap.pipe(
+    map(paramMap => paramMap.get('id')!)
+  );
 
-  constructor(private pack: PackageService, private route: ActivatedRoute) {}
+  favCount$ = this.packageId$.pipe(
+    switchMap(id => this.packagesService.getFavoriteCount(id))
+  );
+
+  package$ = this.id$.pipe(switchMap(id => this.packagesService.getById(id)));
+
+  constructor(
+    private packagesService: PackageService,
+    private route: ActivatedRoute
+  ) {}
 }

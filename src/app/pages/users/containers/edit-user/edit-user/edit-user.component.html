@@ -10,9 +10,9 @@
 
       <mat-card>
         <mat-card-content *ngIf="user$ | async as user">
-          <app-edit-form-user
+          <app-form-edit
             [user]="user"
-            (submitted)="handleEdit($event)"></app-edit-form-user>
+            (submitted)="handleEdit($event)"></app-form-edit>
           <button
             type="button"
             class="mx-1 py-2"

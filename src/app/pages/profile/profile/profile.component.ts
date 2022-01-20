@@ -1,9 +1,7 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { map, Observable, switchMap } from 'rxjs';
 import { User } from 'src/app/core/models/user.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UsersService } from 'src/app/core/services/users.service';
@@ -14,14 +12,18 @@ import { UsersService } from 'src/app/core/services/users.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  display = false;
   user$ = this.auth.profile$;
-  userId = this.route.snapshot.params['id'];
-  userI$ = this.users.one(this.userId);
+  id$: Observable<string> = this.route.paramMap.pipe(
+    map(paramMap => paramMap.get('id')!)
+  );
+  userI$ = this.id$.pipe(switchMap(id => this.users.one(id)));
+
   @Input() user?: User;
   @Input() readonly = false;
 
   @Output() submitted = new EventEmitter<User>();
-  display = false;
+
   editForm = this.fb.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
@@ -30,10 +32,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private users: UsersService,
     private auth: AuthService,
-    private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private snackBar: MatSnackBar
+    private fb: FormBuilder
   ) {}
 
   displayForm() {
@@ -57,17 +57,4 @@ export class ProfileComponent implements OnInit {
     this.submitted.emit(this.editForm.value);
     this.display = true;
   }
-
-  //  onSubmit() {
-
-  //   this.auth.updateProfile(this.editForm.value)
-  //     .pipe(first())
-  //     .subscribe(
-  //       data => {
-  //         this.router.navigate(['profile']);
-  //       },
-  //       error => {
-  //         alert(error);
-  //       });
-  //  }
 }

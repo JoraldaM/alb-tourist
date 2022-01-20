@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs';
+import { map, Observable, switchMap, take } from 'rxjs';
 import { User } from 'src/app/core/models/user.model';
 import { UsersService } from 'src/app/core/services/users.service';
 
@@ -12,8 +12,10 @@ import { UsersService } from 'src/app/core/services/users.service';
   styleUrls: ['./edit-user.component.scss'],
 })
 export class EditUserComponent {
-  userId = this.route.snapshot.params['id'];
-  user$ = this.users.one(this.userId);
+  userId$: Observable<string> = this.route.paramMap.pipe(
+    map(paraMap => paraMap.get('id')!)
+  );
+  user$ = this.userId$.pipe(switchMap(id => this.users.one(id)));
 
   constructor(
     private users: UsersService,
@@ -23,17 +25,17 @@ export class EditUserComponent {
   ) {}
 
   handleEdit(data: User): void {
-    this.users
-      .update(this.userId, data)
+    this.userId$
+      .pipe(switchMap(id => this.users.update(id, data)))
       .pipe(take(1))
-      .subscribe(
-        value => {
+      .subscribe({
+        next: value => {
           this.router.navigate(['dashboard/users']).then();
           this.snackBar.open('User edited successfully', 'close', {
             duration: 1000,
           });
         },
-        error => {
+        error: error => {
           if (error instanceof HttpErrorResponse) {
             if (error.status === 401) {
               this.openSnackBar(error.error.message, 'alert-snackbar');
@@ -42,12 +44,12 @@ export class EditUserComponent {
               this.openSnackBar(error.error.message, 'alert-snackbar');
             }
           }
-        }
-      );
+        },
+      });
   }
   delete(id: number): void {
-    this.users
-      .delete(this.userId)
+    this.userId$
+      .pipe(switchMap(id => this.users.delete(id)))
       .pipe(take(1))
       .subscribe(
         value => {

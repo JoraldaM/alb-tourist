@@ -17,7 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { EditFormUserComponent } from './components/edit-form-user/edit-form-user/edit-form-user.component';
+import { EditFormModule } from 'src/app/shared/form-edit/form-edit.component';
 
 const routes: Routes = [
   {
@@ -45,7 +45,6 @@ const routes: Routes = [
     EditUserComponent,
     UserDetailsComponent,
     AddUserComponent,
-    EditFormUserComponent,
   ],
   imports: [
     CommonModule,
@@ -61,7 +60,7 @@ const routes: Routes = [
     MatCardModule,
     FormsModule,
     MatPaginatorModule,
+    EditFormModule,
   ],
-  exports: [EditFormUserComponent],
 })
 export class UsersModule {}

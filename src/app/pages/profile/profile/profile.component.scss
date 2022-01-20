@@ -8,17 +8,22 @@
 .image-container {
   border-radius: 10%;
   width: 200px;
-  // height: 150px;
   overflow: hidden;
 }
 
-.edit {
+button {
   min-width: 80px;
-  background-color: #b993b7;
+  background-color: rgb(53, 84, 105);
+
   color: white;
   height: 35px;
   margin-top: 20px;
 }
+
+button:hover {
+  background-color: #4d2f4b;
+}
+
 label {
   border-width: 1px;
   border-bottom: solid #8e9db4;

@@ -42,17 +42,17 @@ export class PackageService {
     return this.http.post(`${this.api}/api/Package`, payload);
   }
 
-  updatePackage(id: number, payload: Package): Observable<any> {
+  updatePackage(id: string, payload: Package): Observable<any> {
     return this.http.put(`${this.api}/api/Package/${id}`, payload);
   }
-  delete(id: number): Observable<any> {
+  delete(id: string): Observable<any> {
     return this.http.delete(`${this.api}/api/Package/${id}`);
   }
 
   getFavorite(): Observable<Favorites[]> {
     return this.http.get<Favorites[]>(`${this.api}/api/Favorite`);
   }
-  getFavoriteCount(packageId: number): Observable<any> {
+  getFavoriteCount(packageId: string): Observable<any> {
     return this.http.get(`${this.api}/api/Favorite/package/${packageId}`);
   }
 

@@ -4,8 +4,6 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs';
 import { PackageService } from 'src/app/core/services/packages.service';
-import { ActivatedRoute, Router } from '@angular/router';
-// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-package-list',
@@ -13,16 +11,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./package-list.component.scss'],
 })
 export class PackageListComponent {
-  packageId = this.route.snapshot.params['packageId'];
-  favCount$ = this.packageService.getFavoriteCount(this.packageId);
+  isFavorite = true;
+
   @Input() dataSource!: Favorites[];
+
   @Output() paginated = new EventEmitter<PageEvent>();
+
   constructor(
     private packageService: PackageService,
-    private snackBar: MatSnackBar,
-    private route: ActivatedRoute
+    private snackBar: MatSnackBar
   ) {}
-  isFavorite = true;
 
   onFavorite(id: number) {
     if (this.isFavorite) {
@@ -36,6 +34,7 @@ export class PackageListComponent {
         });
     }
   }
+
   openSnackBar(message: string, panelClass: string): void {
     this.snackBar.open(message, '', {
       duration: 3000,

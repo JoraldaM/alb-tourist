@@ -10,9 +10,7 @@ import { PaginatedData } from '../models/PaginatedData.model';
 @Injectable({ providedIn: 'root' })
 export class UsersService {
   private users = new BehaviorSubject<User[]>([]);
-  // private data = new BehaviorSubject<PaginatedData<User> | null>(null);
   users$ = this.users.asObservable();
-  //  nameFilter: null;
 
   constructor(
     @Inject(API_URL) private api: string,
@@ -36,7 +34,7 @@ export class UsersService {
       .pipe(tap(x => console.log(x)));
   }
 
-  one(id: number): Observable<any> {
+  one(id: string): Observable<any> {
     return this.http.get(`${this.api}/api/User/${id}`);
   }
 
@@ -44,14 +42,14 @@ export class UsersService {
     return this.http.post(`${this.api}/api/User`, payload);
   }
 
-  update(id: number, payload: User): Observable<any> {
+  update(id: string, payload: User): Observable<any> {
     return this.http.put(`${this.api}/api/User/${id}`, payload);
   }
   updateProf(payload: User): Observable<any> {
     return this.http.put(`${this.api}/api/profile`, payload);
   }
 
-  delete(id: number): Observable<any> {
+  delete(id: string): Observable<any> {
     return this.http.delete(`${this.api}/api/User/${id}`);
   }
 

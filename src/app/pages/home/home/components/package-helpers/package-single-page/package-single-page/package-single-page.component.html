@@ -13,6 +13,11 @@
           <h3>{{ package.name }}</h3>
           <br />
           <hr />
+          <label *ngIf="favCount$ | async as count">
+            Favorited:
+            <h3>{{ count }} ❤️</h3>
+          </label>
+          <!-- <mat-icon class="fav">favorite</mat-icon> -->
           <button mat-icon-button routerLink="/home">
             <mat-icon>home</mat-icon>
           </button>
