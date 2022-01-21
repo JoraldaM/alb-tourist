@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { distinctUntilChanged, map, shareReplay, tap } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { distinctUntilChanged, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { API_URL } from '../api.token';
@@ -50,9 +50,6 @@ export class AuthService {
     const formdata = new FormData();
     let params = new HttpParams().set('name', this.name.getValue());
 
-    const httpOptions = {
-      // headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
     for (const key of Object.keys(payload)) {
       const value = payload[key];
       formdata.append(key, value);

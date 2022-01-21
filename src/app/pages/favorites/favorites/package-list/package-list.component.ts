@@ -1,6 +1,5 @@
 import { Favorites } from './../../../../core/models/favorite.model';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs';
 import { PackageService } from 'src/app/core/services/packages.service';
@@ -14,8 +13,6 @@ export class PackageListComponent {
   isFavorite = true;
 
   @Input() dataSource!: Favorites[];
-
-  @Output() paginated = new EventEmitter<PageEvent>();
 
   constructor(
     private packageService: PackageService,

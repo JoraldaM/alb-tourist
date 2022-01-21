@@ -1,4 +1,4 @@
-import { EditFormModule } from './../../shared/form-edit/form-edit.component';
+import { EditFormModule } from '../../shared/form-edit/form/form-edit.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

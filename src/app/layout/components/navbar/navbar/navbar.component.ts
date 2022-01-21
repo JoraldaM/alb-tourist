@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { pluck } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -12,4 +12,5 @@ export class NavbarComponent {
   name$ = this.auth.auth$.pipe(pluck('name'));
 
   constructor(public auth: AuthService) {}
+  role: string | null = this.auth.role;
 }

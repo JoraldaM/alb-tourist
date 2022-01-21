@@ -18,6 +18,12 @@
           <span>Profile</span>
         </span>
       </button>
+      <button mat-menu-item *ngIf="role === 'Admin'">
+        <span class="d-flex align-items-center" routerLink="dashboard">
+          <span class="material-icons mr-1">dashboard</span>
+          <span>Dashboard</span>
+        </span>
+      </button>
       <button mat-menu-item>
         <span class="d-flex align-items-center" routerLink="favorites">
           <span class="material-icons mr-1">favorite_border</span>

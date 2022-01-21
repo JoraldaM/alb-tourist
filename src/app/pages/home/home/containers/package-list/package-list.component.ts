@@ -1,4 +1,3 @@
-import { Favorites } from './../../../../../core/models/favorite.model';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -18,11 +17,12 @@ export class PackageListComponent {
   @Input() isSubmitting: boolean = false;
   @Output() paginated = new EventEmitter<PageEvent>();
   @Output() toggle = new EventEmitter<boolean>();
+
   constructor(
     private packageService: PackageService,
     private snackBar: MatSnackBar
   ) {}
-  // isSubmitting = false;
+
   onFavorite(id: number, data: Package) {
     if (!this.isSubmitting) {
       this.packageService

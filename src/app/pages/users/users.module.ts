@@ -17,7 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { EditFormModule } from 'src/app/shared/form-edit/form-edit.component';
+import { EditFormModule } from 'src/app/shared/form-edit/form/form-edit.component';
 
 const routes: Routes = [
   {

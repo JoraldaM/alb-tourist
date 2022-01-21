@@ -9,8 +9,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SwiperComponent } from './home/components/swiper/swiper.component';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
-
-// import { SwiperModule } from 'swiper/angular';
+// import { MatCardSharedModule } from 'src/app/shared/mat-card/mat-card/mat-card.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,7 +30,7 @@ const routes: Routes = [
     MatIconModule,
     MatPaginatorModule,
     NgxUsefulSwiperModule,
-    // SwiperModule,
+    // MatCardSharedModule,
   ],
 })
 export class HomeModule {}

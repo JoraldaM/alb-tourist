@@ -1,3 +1,4 @@
+// import { MatCardSharedModule } from 'src/app/shared/mat-card/mat-card/mat-card.component';
 import { PackageListComponent } from './favorites/package-list/package-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +18,7 @@ const routes: Routes = [{ path: '', component: FavoritesComponent }];
     MatCardModule,
     MatIconModule,
     MatPaginatorModule,
+    // MatCardSharedModule,
   ],
 })
 export class FavoritesModule {}

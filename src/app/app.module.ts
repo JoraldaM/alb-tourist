@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthInterceptorProvider } from './core/interceptors/auth.interceptor';
 import { NgChartsModule } from 'ng2-charts';
-import { FormEditComponent } from './shared/form-edit/form-edit.component';
 
 @NgModule({
   declarations: [AppComponent],
