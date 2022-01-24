@@ -46,19 +46,6 @@ export class AuthService {
   }
 
   profile$ = this.http.get<User>(`${this.api}/api/Profile`);
-  updateProfile(payload: any): Observable<any> {
-    const formdata = new FormData();
-    let params = new HttpParams().set('name', this.name.getValue());
-
-    for (const key of Object.keys(payload)) {
-      const value = payload[key];
-      formdata.append(key, value);
-    }
-    return this.http.put(`${this.api}/api/profile`, formdata, {
-      headers: { 'Content-Type': 'application/json' },
-      params: params,
-    });
-  }
 
   public getLocalState(): AuthState {
     const localState = localStorage.getItem('auth');
